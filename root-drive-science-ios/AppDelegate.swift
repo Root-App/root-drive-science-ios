@@ -7,15 +7,42 @@
 //
 
 import UIKit
+import CoreLocation
+import CoreMotion
+import RootTripTracker
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    private var tracker: TripTracker!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if CMMotionActivityManager.authorizationStatus() == .notDetermined {
+            let activityManager = CMMotionActivityManager()
+            let operationQueue = OperationQueue()
+            activityManager.queryActivityStarting(from: Date.distantPast, to: Date(), to: operationQueue) {
+                (activities, error) in
+                if error != nil {
+                    //user rejected permission
+                }
+            }
+        }
+        
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            let locationManager = CLLocationManager()
+            locationManager.requestAlwaysAuthorization()
+        }
+        
+        // let clientID = Bundle.main.object(forInfoDictionaryKey: "RootClientID") as! String
+        // let localIP = Bundle.main.object(forInfoDictionaryKey: "ROOTLocalServerIP") as! String
+        
+        tracker = TripTracker(environment: .local)
+        tracker.accessToken = "L49syOCvWEX9mQqqBOgVnA" //See Access Token below
+        tracker.start()
+        
         return true
     }
 
