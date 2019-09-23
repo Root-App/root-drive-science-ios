@@ -10,21 +10,33 @@ import UIKit
 import CoreLocation
 import CoreMotion
 import RootTripTracker
-import RootUtilities
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var locationManager: CLLocationManager?
-    var activityManager: CMMotionActivityManager?
+    private var tracker: TripTracker!
+    
+    static func didReceiveToken(token: String) -> Void {
+        NotificationCenter.default.post(
+            name: .didReceiveToken,
+            object: nil,
+            userInfo: ["token": token])
+    }
+    
+    static func didNotReceiveToken(token: String) -> Void {
+        NotificationCenter.default.post(
+            name: .didNotReceiveToken,
+            object: nil,
+            userInfo: ["token": token]) 
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         if CMMotionActivityManager.authorizationStatus() == .notDetermined {
-            self.activityManager = CMMotionActivityManager()
+            let activityManager = CMMotionActivityManager()
             let operationQueue = OperationQueue()
-            activityManager!.queryActivityStarting(from: Date.distantPast, to: Date(), to: operationQueue) {
+            activityManager.queryActivityStarting(from: Date.distantPast, to: Date(), to: operationQueue) {
                 (activities, error) in
                 if error != nil {
                     //user rejected permission
@@ -33,11 +45,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if CLLocationManager.authorizationStatus() == .notDetermined {
-            self.locationManager = CLLocationManager()
-            locationManager!.requestAlwaysAuthorization()
+            let locationManager = CLLocationManager()
+            locationManager.requestAlwaysAuthorization()
         }
-        Log.setup()
         
+        tracker = TripTracker(environment: .local)
+        tracker.start(
+            clientID: "450911b3-5920-471d-bfdb-be509784e29c",
+            didSucceedCallback: AppDelegate.didReceiveToken,
+            didFailCallback: AppDelegate.didNotReceiveToken)
         return true
     }
 

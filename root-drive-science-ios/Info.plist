@@ -29,11 +29,9 @@
 	<key>NSMotionUsageDescription</key>
 	<string>This app collects motion data </string>
 	<key>ROOTLocalServerIP</key>
-	<string>0ff3eeee.ngrok.io</string>
+	<string>4fa20c6e.ngrok.io</string>
 	<key>ROOTLocalServerPort</key>
 	<string></string>
-	<key>ROOTLocalServerPortMode</key>
-	<string>None</string>
 	<key>RootClientID</key>
 	<string>29728a79-0036-4f45-9e4c-0b1d3bfe609f</string>
 	<key>UIBackgroundModes</key>

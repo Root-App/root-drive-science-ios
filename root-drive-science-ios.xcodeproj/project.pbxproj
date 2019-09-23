@@ -13,9 +13,6 @@
 		1B0F6BF02326DBA700DEDFB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B0F6BEF2326DBA700DEDFB1 /* Assets.xcassets */; };
 		1B0F6BF32326DBA700DEDFB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0F6BF12326DBA700DEDFB1 /* LaunchScreen.storyboard */; };
 		1B0F6BFE2326DBA700DEDFB1 /* root_drive_science_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6BFD2326DBA700DEDFB1 /* root_drive_science_iosTests.swift */; };
-		5AC1F428233E5339001CDFD3 /* ClientTelematicsTokenDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC1F427233E5339001CDFD3 /* ClientTelematicsTokenDelegate.swift */; };
-		5AC3BE7C233CFB6C0006AFC5 /* UserStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3BE7A233CFB6C0006AFC5 /* UserStore.xcdatamodeld */; };
-		5AC3BE7E233D05440006AFC5 /* TelematicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3BE7D233D05440006AFC5 /* TelematicsManager.swift */; };
 		5AE34A9123391AAD00230546 /* notification_name_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE34A9023391AAD00230546 /* notification_name_extensions.swift */; };
 		AB3F231C9A53080B6C2849B7 /* Pods_root_drive_science_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333303D42C9A5E7602836731 /* Pods_root_drive_science_ios.framework */; };
 		CB2BF305B8496B9D51A17B81 /* Pods_root_drive_science_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E624ADF149C0E1F3B5E22320 /* Pods_root_drive_science_iosTests.framework */; };
@@ -46,10 +43,6 @@
 		2D5656562E20A94CA12FA1F9 /* Pods-root-drive-science-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-root-drive-science-ios.release.xcconfig"; path = "Target Support Files/Pods-root-drive-science-ios/Pods-root-drive-science-ios.release.xcconfig"; sourceTree = "<group>"; };
 		333303D42C9A5E7602836731 /* Pods_root_drive_science_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_root_drive_science_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		416EC7BA96A435F14861A246 /* Pods-root-drive-science-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-root-drive-science-iosTests.debug.xcconfig"; path = "Target Support Files/Pods-root-drive-science-iosTests/Pods-root-drive-science-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5A2C667B2344F585002C8CFF /* UserStore 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "UserStore 2.xcdatamodel"; sourceTree = "<group>"; };
-		5AC1F427233E5339001CDFD3 /* ClientTelematicsTokenDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTelematicsTokenDelegate.swift; sourceTree = "<group>"; };
-		5AC3BE7B233CFB6C0006AFC5 /* UserStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserStore.xcdatamodel; sourceTree = "<group>"; };
-		5AC3BE7D233D05440006AFC5 /* TelematicsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelematicsManager.swift; sourceTree = "<group>"; };
 		5AE34A9023391AAD00230546 /* notification_name_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notification_name_extensions.swift; sourceTree = "<group>"; };
 		5AE34A922339477B00230546 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		87ACD7BAE6C476EBE50131A8 /* Pods-root-drive-science-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-root-drive-science-ios.debug.xcconfig"; path = "Target Support Files/Pods-root-drive-science-ios/Pods-root-drive-science-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,7 +72,6 @@
 		1B0F6BDC2326DBA600DEDFB1 = {
 			isa = PBXGroup;
 			children = (
-				5AC3BE7A233CFB6C0006AFC5 /* UserStore.xcdatamodeld */,
 				5AE34A922339477B00230546 /* README.md */,
 				1B0F6BE72326DBA600DEDFB1 /* root-drive-science-ios */,
 				1B0F6BFC2326DBA700DEDFB1 /* root-drive-science-iosTests */,
@@ -108,8 +100,6 @@
 				1B0F6BF12326DBA700DEDFB1 /* LaunchScreen.storyboard */,
 				1B0F6BF42326DBA700DEDFB1 /* Info.plist */,
 				5AE34A9023391AAD00230546 /* notification_name_extensions.swift */,
-				5AC3BE7D233D05440006AFC5 /* TelematicsManager.swift */,
-				5AC1F427233E5339001CDFD3 /* ClientTelematicsTokenDelegate.swift */,
 			);
 			path = "root-drive-science-ios";
 			sourceTree = "<group>";
@@ -318,9 +308,6 @@
 			files = (
 				1B0F6BEB2326DBA600DEDFB1 /* ViewController.swift in Sources */,
 				5AE34A9123391AAD00230546 /* notification_name_extensions.swift in Sources */,
-				5AC1F428233E5339001CDFD3 /* ClientTelematicsTokenDelegate.swift in Sources */,
-				5AC3BE7C233CFB6C0006AFC5 /* UserStore.xcdatamodeld in Sources */,
-				5AC3BE7E233D05440006AFC5 /* TelematicsManager.swift in Sources */,
 				1B0F6BE92326DBA600DEDFB1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,9 +472,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9TDXX3UY3;
+				DEVELOPMENT_TEAM = Z22DE9QC77;
 				INFOPLIST_FILE = "root-drive-science-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -505,9 +491,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q9TDXX3UY3;
+				DEVELOPMENT_TEAM = Z22DE9QC77;
 				INFOPLIST_FILE = "root-drive-science-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -594,20 +579,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		5AC3BE7A233CFB6C0006AFC5 /* UserStore.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5A2C667B2344F585002C8CFF /* UserStore 2.xcdatamodel */,
-				5AC3BE7B233CFB6C0006AFC5 /* UserStore.xcdatamodel */,
-			);
-			currentVersion = 5A2C667B2344F585002C8CFF /* UserStore 2.xcdatamodel */;
-			path = UserStore.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 1B0F6BDD2326DBA600DEDFB1 /* Project object */;
 }

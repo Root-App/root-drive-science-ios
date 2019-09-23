@@ -2,86 +2,86 @@
 
 ## Purpose
 
-This repo contains a sample iOS app that uses the iOS SDK to retrieve a trip token from the Root servers.
+This repo contains a sample iOS app that uses the iOS SDK to retrieve a trip token from
+the Root servers. 
 
-## iOS SDK Requirements
+## Using the iOS SDK
 
-The Root Trip Tracker SDK does not support Swift 5.
-
-Root's Trip Tracker SDK is known to be compatible with Cocoapods 1.6.2. It my not support Cocoapods 1.7.x or 1.8.x.
+The sample code to connect to the SDK can be found in the `AppDelegate.swift` file
+and the `ViewController.swift` file.
 
 In your `Podfile`, add dependencies for the following libraries:
 
 ```
 source 'git@github.com:root-app/root-pod-specs.git'
-source 'https://github.com/CocoaPods/Specs.git'
 
-pod "RootTripTracker", "3.6.0rc1"
+pod "RootTripTracker", "3.6.0"
+pod 'RootReliableAPI', "3.1.0"
 ```
 
-From a terminal in the same directory as your Podfile
-
-```
-pod install
-```
-
-## Connecting to Trip Tracker
-
-The file that connects to the TripTracker needs to import the `RootTripTracker` code:
+In order to connect to the TripTracker, you need a Root Client ID. The file that connects to
+the TripTracker needs to import the `RootTripTracker` code:
 
 ```
 import RootTripTracker
 ```
 
-In order to connect to the TripTracker, you need a Root Client ID. 
+Then, you can obtain a TripTracker instance by calling 
+`TripTracker(environment: <Environment>)`. The value of `Environment` is one
+of `.production`, `.staging`, `.testing`, or `.local`.
 
-There are four calls that you need to make to provision the TripTracker with a driver ID and start the tracker.
 
-First, you obtain a TripTracker instance by calling
-`TripTracker(environment: <Environment>)`. The value of `Environment` is one of `.production`, `.staging`, `.testing`, or `.local`. 
-
-Second, you need to get a `TripTrackerOnboarder` instance: 
-
-```
-let onboard = TripTrackerOnboarder(
-	tracker = TripTracker(environment: .local) 
-  clientId: "your-client-id-here",
-  tripTracker: tracker,
-  delegate: <a delegate>
-)
-```
-
-The `delegate` object needs to implement the `TripTrackerOnboarderDelegate` protocol, which has two methods:
+With that instance, you can obtain a user token and start tracking with `start`. The initial 
+signtature of  `start` if you have a Client ID but not a token is:
 
 ```
-public protocol TripTrackerOnboarderDelegate {
-    func didReceiveTelematicsToken(_ token: String)
-    func didNotReceiveTelematicsToken(_ errorMessage: String)
-}
+public func start(
+    clientID: String,
+    didSucceedCallback: @escaping TypeTrackerStarted = TripTracker.defaultTokenCallback,
+    didFailCallback: @escaping TypeTrackerStarted = TripTracker.defaultTokenCallback) -> Void"
 ```
 
-The delegate should also at least be able to reference the TripTracker instance so that it can start the tracker.
+If the token creation succeeds, the TripTracker receives the token, starts tracking, and 
+calls the `didSucceedCallback` closure with the new token as an argument. In this 
+callback, you would typically do anything you need to do with the token to assoicate it
+wtih the current user. 
 
-Third, you need to call a method on the `TripTrackerOnboarder` to associate a driver token with the tracker. If you do not have a client token, call `onboarder.onboardWithoutToken()`. If you do have a client token (presumably because the user has already been granted on), then you call `onboarder.onboardWithToken(token)`.
+The default callback is just a no-op.
 
-The `onboardWithoutToken` method will make an API call to receive a token. If that method fails, the `didNotReceiveTelematicsToken` of the delegate will be invoked.
+In subsequent uses, if you have the token, you would call start with a different 
+set of arguments:
 
-Fourth, if the call is successful or if you pass the driver token, the delegate `didReceiveTelematicsToken` method is invoked. In that method you should call the `start` method on the TripTracker. You can also use this delegate method to store the client id and associate with the user as your application needs. 
+```
+public func start(
+clientID: String,
+accessToken: String,
+didSucceedCallback: @escaping TypeTrackerStarted = TripTracker.defaultTokenCallback) -> Void
+```
+
+You pass the `clientID` and the `accessToken` and the success handler. There's no
+failure handler because if the tracker already has the token, it won't call the server API,
+removing the failure case. 
+
+If the token creation fails, the `didFailCallback` will get called with a string 
+represention of the error as an argument. 
+
 
 ## Development Requirements
 
-To test against a local environment, set the following keys in the `info.plist` file of your
-application:
+To test against a local envrionment, set the following keys in the `info.plist` file of your
+application: 
 
 - `ROOTLocalServerIP`: The IP address of your local server, without `http` or `https`.
-- `ROOTLocalServerPortMode`: Has one of three values. Use `Default` if the local port is `:3000`, use `None` if your local server doesn't use a port (for example, if you are using ngrok), use `Custom` if you need to specify a different port. 
-- `ROOTLocalServerPort` If your port mode is `Custom`, specify the port number in this key, otherwise you can leave it blank.
-
-Then set the environment to local when you instantiate the TripTracker,  `TripTracker(environment: .local)`.
-
-The production environment looks for the server at `telematics.api.joinroot.com`, the staging
-environment looks for the server at `telematics.api.staging.joinroot.com`.
-
+- `ROOTLocalServerPort` The port used to connect to your local server, if needed. If not 
+    needed, just leave it blank.
+    
+    Then set the environment to local when you instantiate the TripTracker, 
+    `TripTracker(environment: .local)`.
+    
+    The production environment looks for `telematics.api.joinroot.com`, the staging
+    environment looks for `telematics.api.staging.joinroot.com`.
+    
+    ```
 
 
 
