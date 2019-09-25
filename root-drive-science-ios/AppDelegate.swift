@@ -12,24 +12,10 @@ import CoreMotion
 import RootTripTracker
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, TripTrackerOnboarderDelegate {
 
     var window: UIWindow?
     private var tracker: TripTracker!
-    
-    static func didReceiveToken(token: String) -> Void {
-        NotificationCenter.default.post(
-            name: .didReceiveToken,
-            object: nil,
-            userInfo: ["token": token])
-    }
-    
-    static func didNotReceiveToken(token: String) -> Void {
-        NotificationCenter.default.post(
-            name: .didNotReceiveToken,
-            object: nil,
-            userInfo: ["token": token]) 
-    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -50,11 +36,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         tracker = TripTracker(environment: .local)
-        tracker.start(
-            clientID: "450911b3-5920-471d-bfdb-be509784e29c",
-            didSucceedCallback: AppDelegate.didReceiveToken,
-            didFailCallback: AppDelegate.didNotReceiveToken)
+        let onboarder = TripTrackerOnboarder(
+            clientId: "450911b3-5920-471d-bfdb-be509784e29c",
+            tripTracker: tracker,
+            delegate: self)
+        onboarder.onboardWithoutToken()
         return true
+    }
+    
+    func didReceiveTelematicsToken(_ token: String) -> Void {
+        tracker.start()
+        NotificationCenter.default.post(
+            name: .didReceiveToken,
+            object: nil,
+            userInfo: ["token": token])
+    }
+    
+    func didNotReceiveTelematicsToken(_ errorMessage: String) -> Void {
+        NotificationCenter.default.post(
+            name: .didNotReceiveToken,
+            object: nil,
+            userInfo: ["errorMessage": errorMessage])
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

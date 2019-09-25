@@ -7,6 +7,11 @@ the Root servers.
 
 ## Using the iOS SDK
 
+The Root Trip Tracker SDK does not support Swift 5. 
+
+Root's Trip Tracker SDK is known to be compatible with Cocoapods 1.6.2. It my not
+support Cocoapods 1.7.x or 1.8.x.
+
 The sample code to connect to the SDK can be found in the `AppDelegate.swift` file
 and the `ViewController.swift` file.
 
@@ -14,10 +19,17 @@ In your `Podfile`, add dependencies for the following libraries:
 
 ```
 source 'git@github.com:root-app/root-pod-specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
 
 pod "RootTripTracker", "3.6.0"
-pod 'RootReliableAPI', "3.1.0"
 ```
+
+From a terminal in the same directory as your Podfile
+
+```
+pod install
+```
+ 
 
 In order to connect to the TripTracker, you need a Root Client ID. The file that connects to
 the TripTracker needs to import the `RootTripTracker` code:
@@ -68,20 +80,18 @@ represention of the error as an argument.
 
 ## Development Requirements
 
-To test against a local envrionment, set the following keys in the `info.plist` file of your
+To test against a local environment, set the following keys in the `info.plist` file of your
 application: 
 
 - `ROOTLocalServerIP`: The IP address of your local server, without `http` or `https`.
 - `ROOTLocalServerPort` The port used to connect to your local server, if needed. If not 
     needed, just leave it blank.
     
-    Then set the environment to local when you instantiate the TripTracker, 
-    `TripTracker(environment: .local)`.
+Then set the environment to local when you instantiate the TripTracker,  `TripTracker(environment: .local)`.
     
-    The production environment looks for `telematics.api.joinroot.com`, the staging
-    environment looks for `telematics.api.staging.joinroot.com`.
+The production environment looks for `telematics.api.joinroot.com`, the staging
+environment looks for `telematics.api.staging.joinroot.com`.
     
-    ```
 
 
 
