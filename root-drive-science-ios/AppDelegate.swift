@@ -10,19 +10,21 @@ import UIKit
 import CoreLocation
 import CoreMotion
 import RootTripTracker
+import RootUtilities
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, TripTrackerOnboarderDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    private var tracker: TripTracker!
+    var locationManager: CLLocationManager?
+    var activityManager: CMMotionActivityManager?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         if CMMotionActivityManager.authorizationStatus() == .notDetermined {
-            let activityManager = CMMotionActivityManager()
+            self.activityManager = CMMotionActivityManager()
             let operationQueue = OperationQueue()
-            activityManager.queryActivityStarting(from: Date.distantPast, to: Date(), to: operationQueue) {
+            activityManager!.queryActivityStarting(from: Date.distantPast, to: Date(), to: operationQueue) {
                 (activities, error) in
                 if error != nil {
                     //user rejected permission
@@ -31,32 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, TripTrackerOnboarderDeleg
         }
         
         if CLLocationManager.authorizationStatus() == .notDetermined {
-            let locationManager = CLLocationManager()
-            locationManager.requestAlwaysAuthorization()
+            self.locationManager = CLLocationManager()
+            locationManager!.requestAlwaysAuthorization()
         }
+        Log.setup()
         
-        tracker = TripTracker(environment: .local)
-        let onboarder = TripTrackerOnboarder(
-            clientId: "450911b3-5920-471d-bfdb-be509784e29c",
-            tripTracker: tracker,
-            delegate: self)
-        onboarder.onboardWithoutToken()
         return true
-    }
-    
-    func didReceiveTelematicsToken(_ token: String) -> Void {
-        tracker.start()
-        NotificationCenter.default.post(
-            name: .didReceiveToken,
-            object: nil,
-            userInfo: ["token": token])
-    }
-    
-    func didNotReceiveTelematicsToken(_ errorMessage: String) -> Void {
-        NotificationCenter.default.post(
-            name: .didNotReceiveToken,
-            object: nil,
-            userInfo: ["errorMessage": errorMessage])
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -10,11 +10,11 @@ target 'root-drive-science-ios' do
 
   # Pods for root-drive-science-ios
   # Use this version if you are not also changing code in RootTripTracker
-#  pod "RootTripTracker", "3.6.0"
+  pod "RootTripTracker", "3.6.0"
 
 #  Use this version of the apps if you are working in RootTripTracker
-  pod "RootTripTracker", :path => '~/code/root-ios-trip-tracker/RootTripTracker.source.podspec'
-  pod 'RootReliableAPI', :path => '~/code/root-ios-reliable-api/RootReliableAPI.source.podspec'
+  # pod "RootTripTracker", :path => '~/code/root-ios-trip-tracker/RootTripTracker.source.podspec'
+  # pod 'RootReliableAPI', :path => '~/code/root-ios-reliable-api/RootReliableAPI.source.podspec'
 
   target 'root-drive-science-iosTests' do
     inherit! :search_paths
