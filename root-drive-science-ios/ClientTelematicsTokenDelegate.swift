@@ -10,7 +10,7 @@ import Foundation
 import RootTripTracker
 import CoreData
 
-class ClientTelmaticsTokenDelegate: TripTrackerOnboarderDelegate {
+class ClientTelematicsTokenDelegate: TripTrackerOnboarderDelegate {
     
     var userName: String
     

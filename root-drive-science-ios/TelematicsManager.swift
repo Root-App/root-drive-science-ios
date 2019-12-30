@@ -55,7 +55,7 @@ class TelematicsManager {
         let onboarder = TripTrackerOnboarder(
             clientId: "450911b3-5920-471d-bfdb-be509784e29c",
             tripTracker: tracker,
-            delegate: ClientTelmaticsTokenDelegate(userName: userName))
+            delegate: ClientTelematicsTokenDelegate(userName: userName))
         let optionalToken = tokenFor(userName)
         if let token = optionalToken {
             onboarder.onboardWithToken(token)
