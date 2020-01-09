@@ -10,7 +10,6 @@ import UIKit
 import CoreLocation
 import CoreMotion
 import RootTripTracker
-import RootUtilities
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

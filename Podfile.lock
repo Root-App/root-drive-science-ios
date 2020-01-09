@@ -3,23 +3,16 @@ PODS:
   - AWSS3 (2.9.3):
     - AWSCore (= 2.9.3)
   - DataCompression (3.0.0)
-  - RootReliableAPI (3.3.0-b3):
-    - RootUtilities (= 1.6.0-b3)
-  - RootTripTracker (3.7.0-b3):
+  - RootTripTracker (5.1.0-xcode-11-beta-1):
     - AWSS3 (= 2.9.3)
     - DataCompression (= 3.0.0)
-    - RootReliableAPI (= 3.3.0-b3)
-    - RootUtilities (= 1.6.0-b3)
-  - RootUtilities (1.6.0-b3)
 
 DEPENDENCIES:
-  - RootTripTracker (= 3.7.0b3)
+  - RootTripTracker (= 5.1.0-xcode-11-beta-1)
 
 SPEC REPOS:
-  "git@github.com:root-app/root-pod-specs.git":
-    - RootReliableAPI
+  "git@github.com:Root-App/drive-science-pod-specs.git":
     - RootTripTracker
-    - RootUtilities
   https://github.com/CocoaPods/Specs.git:
     - AWSCore
     - AWSS3
@@ -29,10 +22,8 @@ SPEC CHECKSUMS:
   AWSCore: 5cbb6c6ccfad4b55e494c2e8df87781512f7881e
   AWSS3: f016dddb6de858f0cc328d4e10a551299a66a3bb
   DataCompression: 4df426340ccbf53851df71dd652bd80d0ea47eb7
-  RootReliableAPI: f21f671f6ac0fe02aafdd56105bdf15d3f005a83
-  RootTripTracker: 39b32786ea315d498c78dfb009b8cc777a174f98
-  RootUtilities: feaa880c44fb7516d2ef949c7c41added1e61505
+  RootTripTracker: 5a59ec705ba1b6b9fe41b05853f7d241a0b27808
 
-PODFILE CHECKSUM: d62008667df2e5aebd141c07909173c70067a4af
+PODFILE CHECKSUM: 3585ba20dcb0c2acff7179884881f31f59169868
 
 COCOAPODS: 1.8.4

@@ -14,10 +14,13 @@ class TelematicsManager {
     
     static let sharedManager = TelematicsManager()
     private var tracker: TripTracker!
+    private var driveScienceManager: TripTrackerDriveScienceManager!
     public var environment: EnvironmentType
+    public var isTracking: Bool
     
     init() {
-        environment = .local
+        environment = .staging
+        isTracking = false
     }
     
     let userStoreContainer: NSPersistentContainer = {
@@ -49,35 +52,30 @@ class TelematicsManager {
         }
     }
     
-    func start(_ userName: String) -> Void {
+    func start() -> Void {
         tracker = TripTracker(environment: environment) // TODO: Set the environment
         tracker.delegate = self
-        let onboarder = TripTrackerOnboarder(
-            clientId: "450911b3-5920-471d-bfdb-be509784e29c",
+        let clientDelegate = ClientTelematicsTokenDelegate()
+        self.driveScienceManager = TripTrackerDriveScienceManager(
+            clientId: "t56482015d476dd7434f7da4b",
             tripTracker: tracker,
-            delegate: ClientTelematicsTokenDelegate(userName: userName))
-        let optionalToken = tokenFor(userName)
-        if let token = optionalToken {
-            onboarder.onboardWithToken(token)
-        } else {
-            onboarder.onboardWithoutToken()
-        }
+            delegate: clientDelegate,
+            clientDelegate: clientDelegate)
+        driveScienceManager.onboardWithoutToken()
     }
     
     public func startTracker() -> Void {
-        tracker.start()
+        guard let driveScienceManager = self.driveScienceManager else { return }
+        if (!isTracking) {
+            driveScienceManager.activate()
+            isTracking = true
+        }
     }
     
-    public func saveUser(userName: String, token: String) {
-        let viewContext = userStoreContainer.viewContext
-        let user = User(context: viewContext)
-        user.userName = userName
-        user.token = token
-        user.environment = environmentString()
-        do {
-            try viewContext.save()
-        } catch let error as NSError {
-            print(error.description)
+    public func stopTracker() -> Void {
+        if (isTracking) {
+            driveScienceManager.deactivate()
+            isTracking = false
         }
     }
     

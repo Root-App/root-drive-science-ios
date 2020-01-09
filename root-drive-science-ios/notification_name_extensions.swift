@@ -13,4 +13,6 @@ extension Notification.Name {
     static let didNotReceiveToken = Notification.Name("didNotReceiveToken")
     static let didTrackAnalyticsEvent = Notification.Name("didTrackAnalyticsEvent")
     static let didFailWithError = Notification.Name("didFailWithError")
+    static let didStartTrip = Notification.Name("didStartTrip")
+    static let didEndTrip = Notification.Name("didEndTrip")
 }

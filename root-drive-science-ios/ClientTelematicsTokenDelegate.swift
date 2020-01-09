@@ -10,17 +10,10 @@ import Foundation
 import RootTripTracker
 import CoreData
 
-class ClientTelematicsTokenDelegate: TripTrackerOnboarderDelegate {
-    
-    var userName: String
-    
-    public init(userName: String) {
-        self.userName = userName
-    }
+class ClientTelematicsTokenDelegate: TripTrackerDriveScienceManagerDelegate, TripTrackerClientDelegate {
     
     func didReceiveTelematicsToken(_ token: String) -> Void {
         TelematicsManager.sharedManager.startTracker()
-        TelematicsManager.sharedManager.saveUser(userName: self.userName, token: token)
         NotificationCenter.default.post(
             name: .didReceiveToken,
             object: nil,
@@ -32,6 +25,20 @@ class ClientTelematicsTokenDelegate: TripTrackerOnboarderDelegate {
             name: .didNotReceiveToken,
             object: nil,
             userInfo: ["errorMessage": errorMessage])
+    }
+    
+    func tripHasStarted(_ tripId: String) {
+        NotificationCenter.default.post(
+            name: .didStartTrip,
+            object: nil,
+            userInfo: ["tripId": tripId])
+    }
+    
+    func tripHasEnded(_ tripId: String) {
+        NotificationCenter.default.post(
+            name: .didEndTrip,
+            object: nil,
+            userInfo: ["tripId": tripId])
     }
 
 }
