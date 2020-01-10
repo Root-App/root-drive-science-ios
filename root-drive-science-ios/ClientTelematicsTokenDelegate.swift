@@ -27,14 +27,14 @@ class ClientTelematicsTokenDelegate: TripTrackerDriveScienceManagerDelegate, Tri
             userInfo: ["errorMessage": errorMessage])
     }
     
-    func tripHasStarted(_ tripId: String) {
+    func didStartTrip(_ tripId: String) {
         NotificationCenter.default.post(
             name: .didStartTrip,
             object: nil,
             userInfo: ["tripId": tripId])
     }
     
-    func tripHasEnded(_ tripId: String) {
+    func didEndTrip(_ tripId: String) {
         NotificationCenter.default.post(
             name: .didEndTrip,
             object: nil,

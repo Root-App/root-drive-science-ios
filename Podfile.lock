@@ -3,12 +3,12 @@ PODS:
   - AWSS3 (2.9.3):
     - AWSCore (= 2.9.3)
   - DataCompression (3.0.0)
-  - RootTripTracker (5.1.0-xcode-11-beta-1):
+  - RootTripTracker (5.1.0-xcode-11-beta-2):
     - AWSS3 (= 2.9.3)
     - DataCompression (= 3.0.0)
 
 DEPENDENCIES:
-  - RootTripTracker (= 5.1.0-xcode-11-beta-1)
+  - RootTripTracker (= 5.1.0-xcode-11-beta-2)
 
 SPEC REPOS:
   "git@github.com:Root-App/drive-science-pod-specs.git":
@@ -22,8 +22,8 @@ SPEC CHECKSUMS:
   AWSCore: 5cbb6c6ccfad4b55e494c2e8df87781512f7881e
   AWSS3: f016dddb6de858f0cc328d4e10a551299a66a3bb
   DataCompression: 4df426340ccbf53851df71dd652bd80d0ea47eb7
-  RootTripTracker: 5a59ec705ba1b6b9fe41b05853f7d241a0b27808
+  RootTripTracker: 151c5a03cc439a32e7464b9c4dcd12a5ef933c37
 
-PODFILE CHECKSUM: 3585ba20dcb0c2acff7179884881f31f59169868
+PODFILE CHECKSUM: eac4c9f68847a66531c902a11733a839556d77cb
 
 COCOAPODS: 1.8.4
