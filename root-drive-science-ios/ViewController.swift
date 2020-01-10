@@ -12,20 +12,14 @@ import RootTripTracker
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet var trackingLabel: UILabel!
-    @IBOutlet var userNameField: UITextField!
     @IBOutlet var notificationField: UILabel!
-    @IBOutlet var environmentPicker: UIPickerView!
     
     var environmentData: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        environmentPicker.delegate = self
-        environmentPicker.dataSource = self
-        environmentData = ["Local", "Staging"]
-        
-        trackingLabel.text = "Enter name..."
+        trackingLabel.text = "Waiting to start..."
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(onDidReceiveToken(_:)),
@@ -42,53 +36,73 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             self,
             selector: #selector(onDidFailWithError(_:)),
             name: .didFailWithError, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onDidStartTrip(_:)),
+            name: .didStartTrip, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onDidEndTrip(_:)),
+            name: .didEndTrip,
+            object: nil)
     }
     
-    func userName() -> String {
-        return userNameField.text ?? ""
+    func appendNotificationText(_ text: String) {
+        DispatchQueue.main.async {
+            self.notificationField.text = "[\(self.timestamp())]:" + text + "\n" + (self.notificationField.text ?? "")
+        }
+    }
+    
+    func setTrackingText(_ text: String) {
+        DispatchQueue.main.async {
+            self.trackingLabel.text = text
+        }
     }
     
     @IBAction func requestToken(_ sender: UIButton) {
-        dismissKeyboard()
-        trackingLabel.text = "Waiting..."
-        TelematicsManager.sharedManager.start(userName())
+        setTrackingText("Waiting...")
+        TelematicsManager.sharedManager.start()
+    }
+    
+    @IBAction func stopTracking(_ sender: UIButton) {
+        TelematicsManager.sharedManager.stopTracker()
+        setTrackingText("Tracking Stopped")
+        self.appendNotificationText("Tracking Stopped")
     }
     
     @IBAction func resetTokens() {
-        trackingLabel.text = "Resetting..."
+        setTrackingText("Resetting...")
         TelematicsManager.sharedManager.removeAllTokens()
-    }
-    
-    @IBAction func dismissKeyboard() {
-        userNameField.resignFirstResponder()
     }
     
     @objc func onDidReceiveToken(_ notification: Notification) {
         let token = notification.userInfo!["token"] as! String
-        DispatchQueue.main.async {
-            self.trackingLabel.text = "Now tracking user \(self.userName()) \n with token \(token)"
-        }
+        setTrackingText("Tracking Started")
+        self.appendNotificationText("Now tracking token \(token)")
     }
     
     @objc func onDidNotReceiveToken(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.trackingLabel.text = "Error retreiving token"
-        }
+        setTrackingText("Error")
+        self.appendNotificationText("Error retreiving token")
     }
     
     @objc func onDidTrackAnalyticsEvent(_ notification: Notification) {
         let eventName = notification.userInfo!["eventName"] as! String
-        DispatchQueue.main.async {
-            self.notificationField.textColor = UIColor.black
-            self.notificationField.text = "\n[\(self.timestamp())]: \(eventName)" + (self.notificationField.text ?? "")
-        }
+        self.appendNotificationText(eventName)
     }
     
     @objc func onDidFailWithError(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.notificationField.textColor = UIColor.red
-            self.notificationField.text = "\n[\(self.timestamp())]: Error" + (self.notificationField.text ?? "") 
-        }
+        self.appendNotificationText("Error")
+    }
+    
+    @objc func onDidStartTrip(_ notification: Notification) {
+        let tripId = notification.userInfo!["tripId"] as! String
+        self.appendNotificationText("Trip started with id \(tripId)")
+    }
+    
+    @objc func onDidEndTrip(_ notification: Notification) {
+        let tripId = notification.userInfo!["tripId"] as! String
+        self.appendNotificationText("Trip ended with id \(tripId)")
     }
     
     func timestamp() -> String {
