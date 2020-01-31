@@ -9,8 +9,11 @@
 import Foundation
 
 extension Notification.Name {
-    static let didReceiveToken = Notification.Name("didReceiveToken")
-    static let didNotReceiveToken = Notification.Name("didNotReceiveToken")
+    static let didReceiveDriverId = Notification.Name("didReceiveDriverId")
+    static let didNotReceiveDriverId = Notification.Name("didNotReceiveDriverId")
+    static let activationDidSucceed = Notification.Name("activationDidSucceed")
+    static let activationDidFail = Notification.Name("activationDidFail")
+
     static let didTrackAnalyticsEvent = Notification.Name("didTrackAnalyticsEvent")
     static let didFailWithError = Notification.Name("didFailWithError")
     static let didStartTrip = Notification.Name("didStartTrip")

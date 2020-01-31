@@ -11,17 +11,34 @@ import RootTripTracker
 import CoreData
 
 class TelematicsManager {
-    
     static let sharedManager = TelematicsManager()
-    private var tracker: TripTracker!
     private var driveScienceManager: TripTrackerDriveScienceManager!
     public var environment: EnvironmentType
     public var isTracking: Bool
-    
+
     init() {
         environment = .staging
         isTracking = false
+
+        self.driveScienceManager = TripTrackerDriveScienceManager(
+            clientId: "d2ca8c3d33b7985c4b8d0fc8f",
+            environment: environment,
+            delegate: self,
+            clientDelegate: self
+        )
     }
+
+    private let activeDriverIdKey = "ActiveDriverId"
+    var activeDriverId: String? {
+        get {
+            return UserDefaults.standard.string(forKey: activeDriverIdKey)
+        }
+        set(newValue) {
+            return UserDefaults.standard.set(newValue, forKey: activeDriverIdKey)
+        }
+    }
+
+    var hasActiveDriver : Bool { return activeDriverId != nil }
     
     let userStoreContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "UserStore")
@@ -51,28 +68,33 @@ class TelematicsManager {
             return nil
         }
     }
-    
-    func start() -> Void {
-        tracker = TripTracker(environment: environment) // TODO: Set the environment
-        tracker.delegate = self
-        let clientDelegate = ClientTelematicsTokenDelegate()
-        self.driveScienceManager = TripTrackerDriveScienceManager(
-            clientId: "t56482015d476dd7434f7da4b",
-            tripTracker: tracker,
-            delegate: clientDelegate,
-            clientDelegate: clientDelegate)
-        driveScienceManager.onboardWithoutToken()
+
+    func createDriver(driverId: String?, email: String?, phone: String?) {
+        self.driveScienceManager.createDriver(
+            driverId: driverId,
+            email: email,
+            phone: phone
+        )
     }
     
-    public func startTracker() -> Void {
+    func start() {
+        if hasActiveDriver {
+            driveScienceManager.tripTracker.delegate = self
+            startTracker(driverId: activeDriverId!)
+        } else {
+            activationDidFail(driveScienceManager, errorMessage: "No active driver.")
+        }
+    }
+    
+    public func startTracker(driverId: String) {
         guard let driveScienceManager = self.driveScienceManager else { return }
         if (!isTracking) {
-            driveScienceManager.activate()
+            driveScienceManager.activate(driverId: driverId)
             isTracking = true
         }
     }
     
-    public func stopTracker() -> Void {
+    public func stopTracker() {
         if (isTracking) {
             driveScienceManager.deactivate()
             isTracking = false
