@@ -16,12 +16,16 @@ class TelematicsManager {
     public var environment: EnvironmentType
     public var isTracking: Bool
 
+    lazy var clientId: String = {
+        return Bundle.main.object(forInfoDictionaryKey: "RootClientId") as! String
+    }()
+
     init() {
         environment = .staging
         isTracking = false
 
         self.driveScienceManager = TripTrackerDriveScienceManager(
-            clientId: "d2ca8c3d33b7985c4b8d0fc8f",
+            clientId: clientId,
             environment: environment,
             delegate: self,
             clientDelegate: self
