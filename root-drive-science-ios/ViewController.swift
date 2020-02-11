@@ -13,6 +13,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     @IBOutlet var trackingLabel: UILabel!
     @IBOutlet var notificationField: UILabel!
+
+    @IBOutlet weak var driverIdTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
     
     var environmentData: [String] = [String]()
     
@@ -20,31 +24,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         
         trackingLabel.text = "Waiting to start..."
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(onDidReceiveToken(_:)),
-            name: .didReceiveToken, object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(onDidNotReceiveToken(_:)),
-            name: .didNotReceiveToken, object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(onDidTrackAnalyticsEvent(_:)),
-            name: .didTrackAnalyticsEvent, object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(onDidFailWithError(_:)),
-            name: .didFailWithError, object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(onDidStartTrip(_:)),
-            name: .didStartTrip, object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(onDidEndTrip(_:)),
-            name: .didEndTrip,
-            object: nil)
+        notificationField.text = ""
+
+        observe(.didTrackAnalyticsEvent, selector: #selector(onDidTrackAnalyticsEvent(_:)))
+        observe(.didFailWithError, selector: #selector(onDidFailWithError(_:)))
+        observe(.didStartTrip, selector: #selector(onDidStartTrip(_:)))
+        observe(.didEndTrip, selector: #selector(onDidEndTrip(_:)))
+
+        observe(.didReceiveDriverId, selector: #selector(didReceiveDriverId(_:)))
+        observe(.didNotReceiveDriverId, selector: #selector(didNotReceiveDriverId(_:)))
+
+        observe(.activationDidSucceed, selector: #selector(activationDidSucceed(_:)))
+        observe(.activationDidFail, selector: #selector(activationDidFail(_:)))
     }
     
     func appendNotificationText(_ text: String) {
@@ -58,8 +49,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             self.trackingLabel.text = text
         }
     }
+
+    @IBAction func createDriver(_ sender: UIButton) {
+        TelematicsManager.sharedManager.createDriver(
+            driverId: driverIdTextField.text,
+            email: emailTextField.text,
+            phone: emailTextField.text
+        )
+    }
     
-    @IBAction func requestToken(_ sender: UIButton) {
+    @IBAction func startTracking(_ sender: UIButton) {
         setTrackingText("Waiting...")
         TelematicsManager.sharedManager.start()
     }
@@ -75,15 +74,23 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         TelematicsManager.sharedManager.removeAllTokens()
     }
     
-    @objc func onDidReceiveToken(_ notification: Notification) {
-        let token = notification.userInfo!["token"] as! String
-        setTrackingText("Tracking Started")
-        self.appendNotificationText("Now tracking token \(token)")
+    @objc func didReceiveDriverId(_ notification: Notification) {
+        let driverId = notification.userInfo?["driver_id"] as! String
+        self.appendNotificationText("Created driver: \(driverId)")
     }
-    
-    @objc func onDidNotReceiveToken(_ notification: Notification) {
-        setTrackingText("Error")
-        self.appendNotificationText("Error retreiving token")
+
+    @objc func didNotReceiveDriverId(_ notification: Notification) {
+        let message = notification.userInfo?["message"] ?? ""
+        self.appendNotificationText("Unable to create driver: \(message)")
+    }
+
+    @objc func activationDidSucceed(_ notification: Notification) {
+        self.appendNotificationText("Activated successfully.")
+    }
+
+    @objc func activationDidFail(_ notification: Notification) {
+        let message = notification.userInfo?["message"] ?? ""
+        self.appendNotificationText("Unable to activate: \(message)")
     }
     
     @objc func onDidTrackAnalyticsEvent(_ notification: Notification) {
@@ -129,6 +136,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let selection = environmentData[row]
         let environment: EnvironmentType = (selection == "Local") ? .local : .staging
         TelematicsManager.sharedManager.environment = environment
+    }
+
+    func observe(_ name: Notification.Name, selector: Selector) {
+        NotificationCenter.default.addObserver(
+        self,
+        selector: selector,
+        name: name, object: nil)
     }
 
     deinit {
