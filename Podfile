@@ -14,7 +14,9 @@ target 'root-drive-science-ios' do
    pod "RootTripTracker", "5.1.0-xcode-11-beta-2"
 
 #  Use this version of the apps if you are working in RootTripTracker
-#   pod "RootTripTracker", :path => '~/code/root-ios-trip-tracker/RootTripTracker.source.podspec'
+#   pod "RootTripTrackerSource", path: '~/code/root-ios-trip-tracker/RootTripTrackerSource.podspec'
+
+
 
   target 'root-drive-science-iosTests' do
     inherit! :search_paths
