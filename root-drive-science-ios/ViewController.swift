@@ -8,6 +8,7 @@
 
 import UIKit
 import RootTripTracker
+import CoreLocation
 
 class ViewController: UIViewController {
 
@@ -40,6 +41,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTelematics()
+        checkLocationServicesEnabled()
 
         trackingLabel.text = "Waiting to start..."
         notificationField.text = ""
@@ -55,6 +57,12 @@ class ViewController: UIViewController {
 
         driveScienceManager.tripTracker.delegate = self
         telematicsManager = TelematicsManager(driveScienceManager: driveScienceManager)
+    }
+
+    private func checkLocationServicesEnabled() {
+        if !CLLocationManager.locationServicesEnabled() {
+            appendNotificationText("Location services disabled at system level! Will be unable to track trips!")
+        }
     }
 
     // MARK: UI Helpers
