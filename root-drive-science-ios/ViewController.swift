@@ -12,7 +12,7 @@ import RootTripTracker
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet var trackingLabel: UILabel!
-    @IBOutlet var notificationField: UILabel!
+    @IBOutlet var notificationField: UITextView!
 
     @IBOutlet weak var driverIdTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
