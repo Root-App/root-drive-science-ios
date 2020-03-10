@@ -12,9 +12,11 @@ PODS:
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
+  - SwiftFormat/CLI (0.39.0)
 
 DEPENDENCIES:
   - RootTripTracker (= 20200309.0)
+  - SwiftFormat/CLI (= 0.39.0)
 
 SPEC REPOS:
   "git@github.com:Root-App/drive-science-pod-specs.git":
@@ -25,6 +27,7 @@ SPEC REPOS:
     - DataCompression
     - Godzippa
     - SQLite.swift
+    - SwiftFormat
 
 SPEC CHECKSUMS:
   AWSCore: 5cbb6c6ccfad4b55e494c2e8df87781512f7881e
@@ -33,7 +36,8 @@ SPEC CHECKSUMS:
   Godzippa: f438af100364a775ef0707d29ab152c356375fbf
   RootTripTracker: 2bf3d97453f27e5d8c0e18555e1d52745214c29b
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
+  SwiftFormat: a27a799eeaf246313c3b388ad6d5ae33c78eb6f3
 
-PODFILE CHECKSUM: 10ca9b573975f70df442f64c1ccea6e7542a79b4
+PODFILE CHECKSUM: 03b2d646c02a82570db9efa5cbadab4051da78f2
 
 COCOAPODS: 1.8.4
