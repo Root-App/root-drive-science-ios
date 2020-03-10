@@ -79,13 +79,13 @@
 		1B0F6BDC2326DBA600DEDFB1 = {
 			isa = PBXGroup;
 			children = (
-				5AC3BE7A233CFB6C0006AFC5 /* UserStore.xcdatamodeld */,
-				5AE34A922339477B00230546 /* README.md */,
+				AA0EF9B1A9683CAB5386EDD8 /* Frameworks */,
+				B7490396415A84923535CC17 /* Pods */,
+				1B0F6BE62326DBA600DEDFB1 /* Products */,
 				1B0F6BE72326DBA600DEDFB1 /* root-drive-science-ios */,
 				1B0F6BFC2326DBA700DEDFB1 /* root-drive-science-iosTests */,
-				1B0F6BE62326DBA600DEDFB1 /* Products */,
-				B7490396415A84923535CC17 /* Pods */,
-				AA0EF9B1A9683CAB5386EDD8 /* Frameworks */,
+				5AE34A922339477B00230546 /* README.md */,
+				5AC3BE7A233CFB6C0006AFC5 /* UserStore.xcdatamodeld */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,14 +102,14 @@
 			isa = PBXGroup;
 			children = (
 				1B0F6BE82326DBA600DEDFB1 /* AppDelegate.swift */,
-				1B0F6BEA2326DBA600DEDFB1 /* ViewController.swift */,
-				48C32E0F23E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift */,
-				1B0F6BEC2326DBA600DEDFB1 /* Main.storyboard */,
 				1B0F6BEF2326DBA700DEDFB1 /* Assets.xcassets */,
-				1B0F6BF12326DBA700DEDFB1 /* LaunchScreen.storyboard */,
 				1B0F6BF42326DBA700DEDFB1 /* Info.plist */,
-				5AE34A9023391AAD00230546 /* notification_name_extensions.swift */,
+				1B0F6BF12326DBA700DEDFB1 /* LaunchScreen.storyboard */,
+				1B0F6BEC2326DBA600DEDFB1 /* Main.storyboard */,
 				5AC3BE7D233D05440006AFC5 /* TelematicsManager.swift */,
+				48C32E0F23E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift */,
+				1B0F6BEA2326DBA600DEDFB1 /* ViewController.swift */,
+				5AE34A9023391AAD00230546 /* notification_name_extensions.swift */,
 			);
 			path = "root-drive-science-ios";
 			sourceTree = "<group>";
@@ -117,8 +117,8 @@
 		1B0F6BFC2326DBA700DEDFB1 /* root-drive-science-iosTests */ = {
 			isa = PBXGroup;
 			children = (
-				1B0F6BFD2326DBA700DEDFB1 /* root_drive_science_iosTests.swift */,
 				1B0F6BFF2326DBA700DEDFB1 /* Info.plist */,
+				1B0F6BFD2326DBA700DEDFB1 /* root_drive_science_iosTests.swift */,
 			);
 			path = "root-drive-science-iosTests";
 			sourceTree = "<group>";
@@ -350,6 +350,7 @@
 				1B0F6BED2326DBA600DEDFB1 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		1B0F6BF12326DBA700DEDFB1 /* LaunchScreen.storyboard */ = {
@@ -358,6 +359,7 @@
 				1B0F6BF22326DBA700DEDFB1 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
