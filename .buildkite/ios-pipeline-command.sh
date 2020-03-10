@@ -6,7 +6,7 @@ bundle install
 echo "checking synx diff"
 
 set +e pipefail
-git diff
+git diff --quiet
 diff_exit_code=$?
 if [ $diff_exit_code -eq 0 ]
 then

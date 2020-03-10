@@ -10,11 +10,11 @@ import RootTripTracker
 
 extension ViewController: TripTrackerClientDelegate {
     func didStartTrip(_ tripId: String) {
-        self.appendNotificationText("Trip started with id \(tripId)")
+        appendNotificationText("Trip started with id \(tripId)")
     }
 
     func didEndTrip(_ tripId: String) {
-        self.appendNotificationText("Trip ended with id \(tripId)")
+        appendNotificationText("Trip ended with id \(tripId)")
     }
 }
 
@@ -22,8 +22,8 @@ extension ViewController: TripTrackerDriveScienceManagerDelegate {
     func didReceiveDriverId(_ driverId: String) {
         // save our own reference to activeDriverId
         telematicsManager.activeDriverId = driverId
-        self.driverCreated(driverId)
-        self.appendNotificationText("Created driver: \(driverId)")
+        driverCreated(driverId)
+        appendNotificationText("Created driver: \(driverId)")
     }
 
     func didNotReceiveDriverId(_ errorMessage: String) {
@@ -31,16 +31,16 @@ extension ViewController: TripTrackerDriveScienceManagerDelegate {
         DispatchQueue.main.async {
             self.driverStatusField.text = "Driver registration failed"
         }
-        self.appendNotificationText("Unable to create driver: \(errorMessage)")
+        appendNotificationText("Unable to create driver: \(errorMessage)")
     }
 
     func activationDidSucceed(_ manager: TripTrackerDriveScienceManager) {
-        self.appendNotificationText("Activated successfully.")
+        appendNotificationText("Activated successfully.")
         setTrackingSwitch(true)
     }
 
     func activationDidFail(_ manager: TripTrackerDriveScienceManager, errorMessage: String) {
-        self.appendNotificationText("Unable to activate: \(errorMessage)")
+        appendNotificationText("Unable to activate: \(errorMessage)")
     }
 }
 
@@ -48,15 +48,15 @@ extension ViewController: TripTrackerDelegate {
     func tripTracker(
         _ tripTracker: TripTracker,
         didTrackAnalyticsEvent eventName: String,
-        withProperties properties: [String: Any])
-    {
-        self.appendNotificationText(eventName)
+        withProperties properties: [String: Any]
+    ) {
+        appendNotificationText(eventName)
     }
 
     func tripTracker(
         _ tripTracker: TripTracker,
-        didFailWithError error: TripTrackerError)
-    {
-        self.appendNotificationText("Trip Tracker error.")
+        didFailWithError error: TripTrackerError
+    ) {
+        appendNotificationText("Trip Tracker error.")
     }
 }
