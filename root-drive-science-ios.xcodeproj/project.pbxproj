@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B0F6BE92326DBA600DEDFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6BE82326DBA600DEDFB1 /* AppDelegate.swift */; };
 		1B0F6BEB2326DBA600DEDFB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6BEA2326DBA600DEDFB1 /* ViewController.swift */; };
 		1B0F6BEE2326DBA600DEDFB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0F6BEC2326DBA600DEDFB1 /* Main.storyboard */; };
 		1B0F6BF02326DBA700DEDFB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B0F6BEF2326DBA700DEDFB1 /* Assets.xcassets */; };
 		1B0F6BF32326DBA700DEDFB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0F6BF12326DBA700DEDFB1 /* LaunchScreen.storyboard */; };
 		1B0F6BFE2326DBA700DEDFB1 /* root_drive_science_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6BFD2326DBA700DEDFB1 /* root_drive_science_iosTests.swift */; };
 		48C32E1023E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C32E0F23E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift */; };
+		5A7988D024102ECB00584C3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6BE82326DBA600DEDFB1 /* AppDelegate.swift */; };
 		5AC3BE7C233CFB6C0006AFC5 /* UserStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3BE7A233CFB6C0006AFC5 /* UserStore.xcdatamodeld */; };
 		5AC3BE7E233D05440006AFC5 /* TelematicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3BE7D233D05440006AFC5 /* TelematicsManager.swift */; };
 		5AE34A9123391AAD00230546 /* notification_name_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE34A9023391AAD00230546 /* notification_name_extensions.swift */; };
@@ -316,12 +316,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A7988D024102ECB00584C3B /* AppDelegate.swift in Sources */,
 				1B0F6BEB2326DBA600DEDFB1 /* ViewController.swift in Sources */,
 				48C32E1023E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift in Sources */,
 				5AE34A9123391AAD00230546 /* notification_name_extensions.swift in Sources */,
 				5AC3BE7C233CFB6C0006AFC5 /* UserStore.xcdatamodeld in Sources */,
 				5AC3BE7E233D05440006AFC5 /* TelematicsManager.swift in Sources */,
-				1B0F6BE92326DBA600DEDFB1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

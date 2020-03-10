@@ -22,16 +22,21 @@ extension ViewController: TripTrackerDriveScienceManagerDelegate {
     func didReceiveDriverId(_ driverId: String) {
         // save our own reference to activeDriverId
         telematicsManager.activeDriverId = driverId
+        self.driverCreated(driverId)
         self.appendNotificationText("Created driver: \(driverId)")
     }
 
     func didNotReceiveDriverId(_ errorMessage: String) {
         telematicsManager.activeDriverId = nil
+        DispatchQueue.main.async {
+            self.driverStatusField.text = "Driver registration failed"
+        }
         self.appendNotificationText("Unable to create driver: \(errorMessage)")
     }
 
     func activationDidSucceed(_ manager: TripTrackerDriveScienceManager) {
         self.appendNotificationText("Activated successfully.")
+        setTrackingSwitch(true)
     }
 
     func activationDidFail(_ manager: TripTrackerDriveScienceManager, errorMessage: String) {

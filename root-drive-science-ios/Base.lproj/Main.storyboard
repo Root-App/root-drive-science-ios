@@ -19,8 +19,21 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uJq-5S-kDf">
                                 <rect key="frame" x="6" y="0.0" width="363" height="673"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Drive Science Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7z5-IM-2Ot" userLabel="Demo Header">
+                                        <rect key="frame" x="0.0" y="0.0" width="363" height="38.5"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="No Driver Registered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iik-fX-RXJ">
+                                        <rect key="frame" x="0.0" y="38.5" width="363" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIZ-Gf-leN" userLabel="DriverId Field">
-                                        <rect key="frame" x="0.0" y="0.0" width="363" height="54.5"/>
+                                        <rect key="frame" x="0.0" y="59" width="363" height="54.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ha-vG-SXJ" userLabel="Label">
                                                 <rect key="frame" x="0.0" y="17" width="66.5" height="20.5"/>
@@ -48,101 +61,90 @@
                                             <constraint firstItem="c1I-4m-hy2" firstAttribute="centerY" secondItem="WIZ-Gf-leN" secondAttribute="centerY" id="tvf-jB-2J3"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CVX-ba-ya9" userLabel="Email Field">
-                                        <rect key="frame" x="0.0" y="54.5" width="363" height="54.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F08-sp-cvv">
+                                        <rect key="frame" x="0.0" y="113.5" width="363" height="44"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbP-zc-MsR" userLabel="Label">
-                                                <rect key="frame" x="0.0" y="17" width="66.5" height="20.5"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfy-eI-tEf">
+                                                <rect key="frame" x="0.0" y="0.0" width="363" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="WGS-Aj-26O"/>
+                                                </constraints>
+                                                <state key="normal" title="Register Driver"/>
+                                                <connections>
+                                                    <action selector="driverButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Twy-ty-RHs"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="34E-oQ-6Hj" userLabel="Start/Stop Tracking">
+                                        <rect key="frame" x="0.0" y="157.5" width="363" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Tracking Activated:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W09-IQ-rqj">
+                                                <rect key="frame" x="0.0" y="0.0" width="285.5" height="44"/>
+                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.75" height="1"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uvZ-hN-uju" userLabel="Text Field">
-                                                <rect key="frame" x="74.5" y="10" width="288.5" height="34.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="DIQ-3g-fbQ"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstItem="uvZ-hN-uju" firstAttribute="centerY" secondItem="CVX-ba-ya9" secondAttribute="centerY" id="7FR-kG-2Yb"/>
-                                            <constraint firstItem="hbP-zc-MsR" firstAttribute="top" secondItem="CVX-ba-ya9" secondAttribute="top" constant="17" id="7li-CE-zBB"/>
-                                            <constraint firstItem="hbP-zc-MsR" firstAttribute="centerY" secondItem="CVX-ba-ya9" secondAttribute="centerY" id="SCw-Gj-4Y8"/>
-                                            <constraint firstItem="uvZ-hN-uju" firstAttribute="top" secondItem="CVX-ba-ya9" secondAttribute="top" constant="10" id="cWG-Dm-Qgi"/>
-                                            <constraint firstAttribute="trailing" secondItem="uvZ-hN-uju" secondAttribute="trailing" id="hab-s9-4KQ"/>
-                                            <constraint firstItem="hbP-zc-MsR" firstAttribute="leading" secondItem="CVX-ba-ya9" secondAttribute="leading" id="uX1-7t-MpG"/>
-                                            <constraint firstItem="uvZ-hN-uju" firstAttribute="leading" secondItem="hbP-zc-MsR" secondAttribute="trailing" constant="8" id="ycA-Gv-cq3"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eje-Ua-LvH" userLabel="Phone Field">
-                                        <rect key="frame" x="0.0" y="109" width="363" height="54.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4v-W4-zEV" userLabel="Label">
-                                                <rect key="frame" x="0.0" y="17" width="66.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="djb-5f-1yV" userLabel="Text Field">
-                                                <rect key="frame" x="74.5" y="10" width="288.5" height="34.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="dKS-Sd-Dbt"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstItem="c4v-W4-zEV" firstAttribute="centerY" secondItem="eje-Ua-LvH" secondAttribute="centerY" id="61Z-cN-XFi"/>
-                                            <constraint firstItem="c4v-W4-zEV" firstAttribute="top" secondItem="eje-Ua-LvH" secondAttribute="top" constant="17" id="8IK-qU-Czz"/>
-                                            <constraint firstItem="c4v-W4-zEV" firstAttribute="leading" secondItem="eje-Ua-LvH" secondAttribute="leading" id="FpX-Nc-not"/>
-                                            <constraint firstAttribute="trailing" secondItem="djb-5f-1yV" secondAttribute="trailing" id="KtR-Nf-LZ8"/>
-                                            <constraint firstItem="djb-5f-1yV" firstAttribute="centerY" secondItem="eje-Ua-LvH" secondAttribute="centerY" id="Ntb-3Y-vQ6"/>
-                                            <constraint firstItem="djb-5f-1yV" firstAttribute="leading" secondItem="c4v-W4-zEV" secondAttribute="trailing" constant="8" id="Pjx-fp-Jsa"/>
-                                            <constraint firstItem="djb-5f-1yV" firstAttribute="top" secondItem="eje-Ua-LvH" secondAttribute="top" constant="10" id="TtO-oo-0Z0"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfy-eI-tEf">
-                                        <rect key="frame" x="0.0" y="163.5" width="363" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="WGS-Aj-26O"/>
-                                        </constraints>
-                                        <state key="normal" title="Create Driver"/>
-                                        <connections>
-                                            <action selector="createDriver:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Thi-LZ-GTd"/>
-                                        </connections>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="34E-oQ-6Hj" userLabel="Start/Stop Tracking">
-                                        <rect key="frame" x="0.0" y="207.5" width="363" height="44"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yx5-4w-kEi">
-                                                <rect key="frame" x="0.0" y="0.0" width="181.5" height="44"/>
-                                                <state key="normal" title="Start Tracking"/>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yTr-4H-RKF">
+                                                <rect key="frame" x="285.5" y="0.0" width="79.5" height="44"/>
                                                 <connections>
-                                                    <action selector="startTracking:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uG2-Qg-oNa"/>
+                                                    <action selector="trackingSwitchTouched:" destination="BYZ-38-t0r" eventType="valueChanged" id="ZQt-lw-oqe"/>
                                                 </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQZ-bP-KbR">
-                                                <rect key="frame" x="181.5" y="0.0" width="181.5" height="44"/>
-                                                <state key="normal" title="Stop Tracking"/>
-                                                <connections>
-                                                    <action selector="stopTracking:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e4v-Pj-Bai"/>
-                                                </connections>
-                                            </button>
+                                            </switch>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="8ld-u2-ZPk"/>
-                                            <constraint firstItem="Yx5-4w-kEi" firstAttribute="width" secondItem="OQZ-bP-KbR" secondAttribute="width" id="BNl-05-6Zb"/>
-                                            <constraint firstItem="OQZ-bP-KbR" firstAttribute="height" secondItem="34E-oQ-6Hj" secondAttribute="height" id="GuT-5F-Usi"/>
-                                            <constraint firstItem="Yx5-4w-kEi" firstAttribute="height" secondItem="34E-oQ-6Hj" secondAttribute="height" id="ICi-sY-YZh"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="0iq-Fz-ugA" userLabel="Auto activate">
+                                        <rect key="frame" x="0.0" y="201.5" width="363" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reactivate on AppStart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDA-OA-Rrn">
+                                                <rect key="frame" x="0.0" y="0.0" width="284.5" height="44"/>
+                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.75" height="1"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Hv8-sa-inE">
+                                                <rect key="frame" x="284.5" y="0.0" width="80.5" height="44"/>
+                                                <connections>
+                                                    <action selector="reactivateSwitchTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k4J-dg-PTc"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Orx-0W-VDB"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fm0-CW-wOF" userLabel="Clear/Copy Log">
+                                        <rect key="frame" x="0.0" y="245.5" width="363" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg0-dH-bfN">
+                                                <rect key="frame" x="0.0" y="0.0" width="181.5" height="44"/>
+                                                <state key="normal" title="Clear Log"/>
+                                                <connections>
+                                                    <action selector="clearLog:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lCp-dR-dna"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpe-gS-Wuc">
+                                                <rect key="frame" x="181.5" y="0.0" width="181.5" height="44"/>
+                                                <state key="normal" title="Copy Log"/>
+                                                <connections>
+                                                    <action selector="copyLog:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LhS-ot-OWM"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="cg0-dH-bfN" firstAttribute="width" secondItem="Hpe-gS-Wuc" secondAttribute="width" id="2LX-qr-gzm"/>
+                                            <constraint firstItem="Hpe-gS-Wuc" firstAttribute="height" secondItem="fm0-CW-wOF" secondAttribute="height" id="fgt-W8-oU7"/>
+                                            <constraint firstItem="cg0-dH-bfN" firstAttribute="height" secondItem="fm0-CW-wOF" secondAttribute="height" id="xX9-0K-2P1"/>
+                                            <constraint firstAttribute="height" constant="44" id="yUA-q2-dhF"/>
                                         </constraints>
                                     </stackView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hwa-w3-FwN">
-                                        <rect key="frame" x="0.0" y="251.5" width="363" height="357"/>
+                                        <rect key="frame" x="0.0" y="289.5" width="363" height="363"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="bHd-dD-PWk"/>
@@ -152,27 +154,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tracking..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mm4-QV-jRo">
-                                        <rect key="frame" x="0.0" y="608.5" width="363" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Trip Tracker Version: 20200309.0 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4h-Rf-NGq">
+                                        <rect key="frame" x="0.0" y="652.5" width="363" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSK-2X-fXl">
-                                        <rect key="frame" x="0.0" y="629" width="363" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="sJa-Iv-JMC"/>
-                                        </constraints>
-                                        <state key="normal" title="Reset All Tokens"/>
-                                        <connections>
-                                            <action selector="resetTokens" destination="BYZ-38-t0r" eventType="touchUpInside" id="VpU-kq-yah"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="c1I-4m-hy2" firstAttribute="width" secondItem="djb-5f-1yV" secondAttribute="width" id="nFN-eT-rJw"/>
-                                    <constraint firstItem="c1I-4m-hy2" firstAttribute="width" secondItem="uvZ-hN-uju" secondAttribute="width" id="pJA-cE-8E1"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -186,11 +174,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="createDriverButton" destination="Nfy-eI-tEf" id="A6y-Yw-9TO"/>
                         <outlet property="driverIdTextField" destination="c1I-4m-hy2" id="HBt-VU-4Rp"/>
-                        <outlet property="emailTextField" destination="uvZ-hN-uju" id="X5r-sT-sue"/>
+                        <outlet property="driverStatusField" destination="Iik-fX-RXJ" id="vvf-pk-XSK"/>
                         <outlet property="notificationField" destination="hwa-w3-FwN" id="LJX-no-KA7"/>
-                        <outlet property="phoneTextField" destination="djb-5f-1yV" id="Wzm-OG-Dd0"/>
-                        <outlet property="trackingLabel" destination="Mm4-QV-jRo" id="GZh-Hm-jVs"/>
+                        <outlet property="reactivateSwitch" destination="Hv8-sa-inE" id="ZKg-CR-U6f"/>
+                        <outlet property="tripTrackingSwitch" destination="yTr-4H-RKF" id="cLC-fA-ZsZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

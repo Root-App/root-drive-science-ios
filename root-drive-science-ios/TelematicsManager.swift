@@ -14,10 +14,22 @@ class TelematicsManager {
 
     public private(set) var driveScienceManager: TripTrackerDriveScienceManager
     public var isTracking: Bool
+    
+    static var clientId: String = {
+        return Bundle.main.object(forInfoDictionaryKey: "RootClientId") as! String
+    }()
 
-    init(driveScienceManager: TripTrackerDriveScienceManager) {
-        isTracking = false
-        self.driveScienceManager = driveScienceManager
+    init(delegate: TripTrackerDriveScienceManagerDelegate,
+         clientDelegate: TripTrackerClientDelegate,
+         tripTrackerDelegate: TripTrackerDelegate) {
+        self.driveScienceManager = TripTrackerDriveScienceManager(
+            clientId: TelematicsManager.clientId,
+            environment: .staging,
+            delegate: delegate,
+            clientDelegate: clientDelegate
+        )
+        driveScienceManager.tripTracker.delegate = tripTrackerDelegate
+        isTracking = driveScienceManager.configuredToAutoActivate
     }
 
     private let activeDriverIdKey = "ActiveDriverId"
@@ -40,6 +52,11 @@ class TelematicsManager {
         )
     }
     
+    func cancelDriver() {
+        activeDriverId = nil
+        driveScienceManager.clearActiveDriver()
+    }
+    
     public func start() -> Bool {
         guard hasActiveDriver else { return false }
         guard !isTracking else { return false }
@@ -55,6 +72,14 @@ class TelematicsManager {
             driveScienceManager.deactivate()
             isTracking = false
         }
+    }
+    
+    public func configuredToAutoActivate() -> Bool {
+        return driveScienceManager.configuredToAutoActivate
+    }
+    
+    public func setAutoActivate(_ status: Bool) {
+        driveScienceManager.storedSuppressAutoActivate = !status
     }
 
 }
