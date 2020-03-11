@@ -12,6 +12,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var telematicsManager: TelematicsManager!
+    var logReceiver: LogReceiver!
 
     @IBOutlet var notificationField: UITextView!
     @IBOutlet var driverStatusField: UILabel!
@@ -38,6 +39,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        logReceiver = LogReceiver(viewController: self, level: LogReceiver.LogLevel.Info)
         setupTelematics()
         checkLocationServicesEnabled()
         notificationField.text = ""
@@ -94,19 +96,29 @@ class ViewController: UIViewController {
 
     private func checkLocationServicesEnabled() {
         if !CLLocationManager.locationServicesEnabled() {
-            appendNotificationText("Location services disabled at system level! Will be unable to track trips!")
+            appendNotificationText(
+                "Location services disabled at system level! Will be unable to track trips!",
+                color: UIColor.systemRed
+            )
         }
     }
 
-    func appendNotificationText(_ text: String) {
+    public func appendNotificationText(_ text: String, color: UIColor = UIColor.black) {
         DispatchQueue.main.async {
-            self.notificationField.text = "[\(self.timestamp)]:" + text + "\n" + (self.notificationField.text ?? "")
+            let newAttributedText = NSMutableAttributedString(
+                string: "[\(self.timestamp)]:" + text + "\n",
+                attributes: [NSAttributedString.Key.foregroundColor: color,
+                             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0)]
+            )
+            let existingText: NSAttributedString = self.notificationField.attributedText ?? NSAttributedString(string: "")
+            newAttributedText.append(existingText)
+            self.notificationField.attributedText = newAttributedText
         }
     }
 
     @IBAction func driverButtonClicked(_ sender: UIButton) {
         if telematicsManager.hasActiveDriver {
-            cancelDriver()
+            clearDriver()
         } else {
             telematicsManager.createDriver(
                 driverId: driverIdTextField.text,
@@ -120,7 +132,7 @@ class ViewController: UIViewController {
         displayTelematicsManagerState()
     }
 
-    func cancelDriver() {
+    func clearDriver() {
         telematicsManager.cancelDriver()
         stopTracking()
         appendNotificationText("Driver canceled successfully")
