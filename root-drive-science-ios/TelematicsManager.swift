@@ -6,18 +6,29 @@
 //  Copyright © 2019 Root. All rights reserved.
 //
 
+import CoreData
 import Foundation
 import RootTripTracker
-import CoreData
 
 class TelematicsManager {
-
     public private(set) var driveScienceManager: TripTrackerDriveScienceManager
     public var isTracking: Bool
 
-    init(driveScienceManager: TripTrackerDriveScienceManager) {
-        isTracking = false
-        self.driveScienceManager = driveScienceManager
+    static var clientId: String = {
+        Bundle.main.object(forInfoDictionaryKey: "RootClientId") as! String
+    }()
+
+    init(delegate: TripTrackerDriveScienceManagerDelegate,
+         clientDelegate: TripTrackerClientDelegate,
+         tripTrackerDelegate: TripTrackerDelegate) {
+        driveScienceManager = TripTrackerDriveScienceManager(
+            clientId: TelematicsManager.clientId,
+            environment: .staging,
+            delegate: delegate,
+            clientDelegate: clientDelegate
+        )
+        driveScienceManager.tripTracker.delegate = tripTrackerDelegate
+        isTracking = driveScienceManager.configuredToAutoActivate
     }
 
     private let activeDriverIdKey = "ActiveDriverId"
@@ -26,20 +37,25 @@ class TelematicsManager {
             return UserDefaults.standard.string(forKey: activeDriverIdKey)
         }
         set(newValue) {
-            return UserDefaults.standard.set(newValue, forKey: activeDriverIdKey)
+            UserDefaults.standard.set(newValue, forKey: activeDriverIdKey)
         }
     }
 
-    var hasActiveDriver : Bool { return activeDriverId != nil }
+    var hasActiveDriver: Bool { return activeDriverId != nil }
 
     func createDriver(driverId: String?, email: String?, phone: String?) {
-        self.driveScienceManager.createDriver(
+        driveScienceManager.createDriver(
             driverId: driverId,
             email: email,
             phone: phone
         )
     }
-    
+
+    func cancelDriver() {
+        activeDriverId = nil
+        driveScienceManager.clearActiveDriver()
+    }
+
     public func start() -> Bool {
         guard hasActiveDriver else { return false }
         guard !isTracking else { return false }
@@ -51,10 +67,17 @@ class TelematicsManager {
     }
 
     public func stop() {
-        if (isTracking) {
+        if isTracking {
             driveScienceManager.deactivate()
             isTracking = false
         }
     }
 
+    public func configuredToAutoActivate() -> Bool {
+        return driveScienceManager.configuredToAutoActivate
+    }
+
+    public func setAutoActivate(_ status: Bool) {
+        driveScienceManager.storedSuppressAutoActivate = !status
+    }
 }

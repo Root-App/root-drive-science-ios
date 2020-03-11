@@ -6,11 +6,10 @@
 //  Copyright © 2019 Root. All rights reserved.
 //
 
-import XCTest
 @testable import root_drive_science_ios
+import XCTest
 
 class root_drive_science_iosTests: XCTestCase {
-
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -26,9 +25,8 @@ class root_drive_science_iosTests: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

@@ -1,0 +1,14 @@
+build/
+xcuserdata
+*.xccheckout
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+ios/Pods/Local Podspecs/
+.DS_Store
+.idea
+test_output.log
+xcodebuild.log
+*.bak
+Pods/

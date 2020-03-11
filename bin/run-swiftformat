@@ -1,0 +1,3 @@
+#!/bin/bash
+
+Pods/SwiftFormat/CommandLineTool/swiftformat --config .swiftformat root-drive-science-ios root-drive-science-iosTests  $@
