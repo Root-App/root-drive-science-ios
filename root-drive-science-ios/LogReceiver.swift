@@ -11,12 +11,8 @@ class LogReceiver: LogDelegate {
     }
 
     public var level: LogLevel
-    public var view: ViewController
+    public weak var view: ViewController?
     var mostRecentMessage: String
-
-    public static func fromString(_ levelString: String) -> LogLevel {
-        LogLevel(rawValue: levelString) ?? LogLevel.Warning
-    }
 
     public init(viewController: ViewController, level: LogLevel = LogLevel.Warning) {
         self.level = level
@@ -27,7 +23,7 @@ class LogReceiver: LogDelegate {
 
     func sendLog(_ message: String, color: UIColor = UIColor.black) {
         if message != mostRecentMessage {
-            view.appendNotificationText(message, color: color)
+            view?.appendNotificationText(message, color: color)
             mostRecentMessage = message
         }
     }

@@ -12,3 +12,4 @@ test_output.log
 xcodebuild.log
 *.bak
 Pods/
+root-drive-science-ios.xcworkspace/xcuserdata
