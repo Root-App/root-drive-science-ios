@@ -13,6 +13,7 @@
 		1B0F6BF32326DBA700DEDFB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0F6BF12326DBA700DEDFB1 /* LaunchScreen.storyboard */; };
 		1B0F6BFE2326DBA700DEDFB1 /* root_drive_science_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6BFD2326DBA700DEDFB1 /* root_drive_science_iosTests.swift */; };
 		48C32E1023E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C32E0F23E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift */; };
+		5A301B88241929D40027E14B /* LogReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A301B87241929D40027E14B /* LogReceiver.swift */; };
 		5A7988D024102ECB00584C3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6BE82326DBA600DEDFB1 /* AppDelegate.swift */; };
 		5AC3BE7C233CFB6C0006AFC5 /* UserStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3BE7A233CFB6C0006AFC5 /* UserStore.xcdatamodeld */; };
 		5AC3BE7E233D05440006AFC5 /* TelematicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3BE7D233D05440006AFC5 /* TelematicsManager.swift */; };
@@ -48,6 +49,7 @@
 		416EC7BA96A435F14861A246 /* Pods-root-drive-science-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-root-drive-science-iosTests.debug.xcconfig"; path = "Target Support Files/Pods-root-drive-science-iosTests/Pods-root-drive-science-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		48C32E0F23E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+TripTrackerDelegates.swift"; sourceTree = "<group>"; };
 		5A2C667B2344F585002C8CFF /* UserStore 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "UserStore 2.xcdatamodel"; sourceTree = "<group>"; };
+		5A301B87241929D40027E14B /* LogReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogReceiver.swift; sourceTree = "<group>"; };
 		5AC3BE7B233CFB6C0006AFC5 /* UserStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserStore.xcdatamodel; sourceTree = "<group>"; };
 		5AC3BE7D233D05440006AFC5 /* TelematicsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelematicsManager.swift; sourceTree = "<group>"; };
 		5AE34A9023391AAD00230546 /* notification_name_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notification_name_extensions.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				1B0F6BEF2326DBA700DEDFB1 /* Assets.xcassets */,
 				1B0F6BF42326DBA700DEDFB1 /* Info.plist */,
 				1B0F6BF12326DBA700DEDFB1 /* LaunchScreen.storyboard */,
+				5A301B87241929D40027E14B /* LogReceiver.swift */,
 				1B0F6BEC2326DBA600DEDFB1 /* Main.storyboard */,
 				5AC3BE7D233D05440006AFC5 /* TelematicsManager.swift */,
 				48C32E0F23E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift */,
@@ -322,6 +325,7 @@
 				5AE34A9123391AAD00230546 /* notification_name_extensions.swift in Sources */,
 				5AC3BE7C233CFB6C0006AFC5 /* UserStore.xcdatamodeld in Sources */,
 				5AC3BE7E233D05440006AFC5 /* TelematicsManager.swift in Sources */,
+				5A301B88241929D40027E14B /* LogReceiver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
