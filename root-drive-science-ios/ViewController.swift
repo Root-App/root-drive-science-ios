@@ -106,7 +106,12 @@ class ViewController: UIViewController {
 
     @IBAction func driverButtonClicked(_ sender: UIButton) {
         if telematicsManager.hasActiveDriver {
-            cancelDriver()
+            let alert = UIAlertController(title: "Are you sure?", message: "This will unregister your driver.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Unregister", style: .destructive, handler: { _ in
+                self.cancelDriver()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+            self.present(alert, animated: true, completion: nil)
         } else {
             telematicsManager.createDriver(
                 driverId: driverIdTextField.text,
@@ -123,7 +128,7 @@ class ViewController: UIViewController {
     func cancelDriver() {
         telematicsManager.cancelDriver()
         stopTracking()
-        appendNotificationText("Driver canceled successfully")
+        appendNotificationText("Driver unregistered successfully")
         displayTelematicsManagerState()
     }
 
