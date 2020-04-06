@@ -13,15 +13,16 @@ import UIKit
 class ViewController: UIViewController {
     var telematicsManager: TelematicsManager!
 
-    @IBOutlet var notificationField: UITextView!
-    @IBOutlet var driverStatusField: UILabel!
+    @IBOutlet weak var notificationField: UITextView!
+    @IBOutlet weak var driverStatusField: UILabel!
+    @IBOutlet weak var versionFooter: UILabel!
 
-    @IBOutlet var driverIdTextField: UITextField!
+    @IBOutlet weak var driverIdTextField: UITextField!
 
-    @IBOutlet var createDriverButton: UIButton!
+    @IBOutlet weak var createDriverButton: UIButton!
 
-    @IBOutlet var tripTrackingSwitch: UISwitch!
-    @IBOutlet var reactivateSwitch: UISwitch!
+    @IBOutlet weak var tripTrackingSwitch: UISwitch!
+    @IBOutlet weak var reactivateSwitch: UISwitch!
 
     var environmentData: [String] = [String]()
 
@@ -41,6 +42,8 @@ class ViewController: UIViewController {
         setupTelematics()
         checkLocationServicesEnabled()
         notificationField.text = ""
+        driverStatusField.isCopyEnabled = true
+        versionFooter.isCopyEnabled = true
     }
 
     func displayTelematicsManagerState() {
