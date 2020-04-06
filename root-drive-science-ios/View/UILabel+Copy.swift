@@ -9,7 +9,6 @@
 import UIKit
 
 extension UILabel {
-
     public override var canBecomeFirstResponder: Bool { isUserInteractionEnabled }
 
     var isCopyEnabled: Bool {

@@ -13,16 +13,16 @@ import UIKit
 class ViewController: UIViewController {
     var telematicsManager: TelematicsManager!
 
-    @IBOutlet weak var notificationField: UITextView!
-    @IBOutlet weak var driverStatusField: UILabel!
-    @IBOutlet weak var versionFooter: UILabel!
+    @IBOutlet var notificationField: UITextView!
+    @IBOutlet var driverStatusField: UILabel!
+    @IBOutlet var versionFooter: UILabel!
 
-    @IBOutlet weak var driverIdTextField: UITextField!
+    @IBOutlet var driverIdTextField: UITextField!
 
-    @IBOutlet weak var createDriverButton: UIButton!
+    @IBOutlet var createDriverButton: UIButton!
 
-    @IBOutlet weak var tripTrackingSwitch: UISwitch!
-    @IBOutlet weak var reactivateSwitch: UISwitch!
+    @IBOutlet var tripTrackingSwitch: UISwitch!
+    @IBOutlet var reactivateSwitch: UISwitch!
 
     var environmentData: [String] = [String]()
 
@@ -103,7 +103,7 @@ class ViewController: UIViewController {
 
     func appendNotificationText(_ text: String) {
         DispatchQueue.main.async {
-            self.notificationField.text = "[\(self.timestamp)]:" + text + "\n" + (self.notificationField.text ?? "")
+            self.notificationField.text = self.notificationField.text.appending("[\(self.timestamp)]:" + text + "\n")
         }
     }
 
