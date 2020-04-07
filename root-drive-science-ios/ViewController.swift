@@ -40,6 +40,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = UIColor(red: 1.0, green: 87 / 255, blue: 21 / 255, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
 
         setupTelematics()
         checkLocationServicesEnabled()

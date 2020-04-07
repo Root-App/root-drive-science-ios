@@ -9,7 +9,6 @@
 import UIKit
 
 class DriverStatusField: UIView {
-
     @IBOutlet var label: UILabel!
     @IBOutlet var driverId: UILabel!
 
