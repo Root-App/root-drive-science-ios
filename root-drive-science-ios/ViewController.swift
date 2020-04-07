@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet var driverStatusField: UILabel!
     @IBOutlet var versionFooter: UILabel!
 
+    @IBOutlet var activationToggleRow: UIStackView!
     @IBOutlet var driverIdTextField: UITextField!
 
     @IBOutlet var createDriverButton: UIButton!
@@ -78,6 +79,9 @@ class ViewController: UIViewController {
     }
 
     func displayActivationToggle() {
+        UIView.animate(withDuration: 0.2) {
+            self.activationToggleRow.alpha = self.telematicsManager.hasActiveDriver ? 1 : 0
+        }
         tripTrackingSwitch.isEnabled = telematicsManager.hasActiveDriver
         setTrackingSwitch(telematicsManager.isTracking)
     }
