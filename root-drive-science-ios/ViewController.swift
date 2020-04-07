@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     var telematicsManager: TelematicsManager!
 
     @IBOutlet var notificationField: UITextView!
-    @IBOutlet var driverStatusField: UILabel!
     @IBOutlet var versionFooter: UILabel!
+    @IBOutlet var driverStatusView: DriverStatusField!
 
     @IBOutlet var activationToggleRow: UIStackView!
     @IBOutlet var driverIdTextField: UITextField!
@@ -40,10 +40,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupTelematics()
         checkLocationServicesEnabled()
         notificationField.text = ""
-        driverStatusField.isCopyEnabled = true
+        driverStatusView.driverId.isCopyEnabled = true
         versionFooter.isCopyEnabled = true
     }
 
@@ -58,11 +59,7 @@ class ViewController: UIViewController {
     }
 
     func displayDriverRegistrationLabel() {
-        if telematicsManager.hasActiveDriver {
-            driverStatusField.text = "Driver registered: \(telematicsManager.activeDriverId!)"
-        } else {
-            driverStatusField.text = "No Driver Registered"
-        }
+        driverStatusView.registeredDriverId = telematicsManager.activeDriverId
     }
 
     func displayDriverIdField() {

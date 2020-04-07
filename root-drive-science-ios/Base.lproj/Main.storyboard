@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
@@ -8,32 +8,49 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Drive Science Demo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="root_drive_science_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Drive Science Demo" interfaceStyle="light" id="BYZ-38-t0r" customClass="ViewController" customModule="root_drive_science_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uJq-5S-kDf">
-                                <rect key="frame" x="6" y="0.0" width="363" height="673"/>
+                                <rect key="frame" x="6" y="0.0" width="308" height="530"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Drive Science Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7z5-IM-2Ot" userLabel="Demo Header">
-                                        <rect key="frame" x="0.0" y="0.0" width="363" height="38.5"/>
-                                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="32"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="No Driver Registered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iik-fX-RXJ">
-                                        <rect key="frame" x="0.0" y="38.5" width="363" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Mc-2H-DaC" customClass="DriverStatusField" customModule="root_drive_science_ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="308" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Driver Registered" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTJ-6T-Q8u" userLabel="Status Label">
+                                                <rect key="frame" x="0.0" y="12" width="159" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="my-driver-id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5z-iU-vR0">
+                                                <rect key="frame" x="171" y="12" width="95.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="3WK-u3-Ncj"/>
+                                            <constraint firstItem="f5z-iU-vR0" firstAttribute="leading" secondItem="sTJ-6T-Q8u" secondAttribute="trailing" priority="750" constant="12" id="CwE-RT-jpc"/>
+                                            <constraint firstItem="sTJ-6T-Q8u" firstAttribute="leading" secondItem="3Mc-2H-DaC" secondAttribute="leading" id="Oqo-eU-gtP"/>
+                                            <constraint firstItem="sTJ-6T-Q8u" firstAttribute="centerY" secondItem="3Mc-2H-DaC" secondAttribute="centerY" id="SVB-OR-9LG"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f5z-iU-vR0" secondAttribute="trailing" constant="6" id="b5Y-7S-Pe9"/>
+                                            <constraint firstItem="f5z-iU-vR0" firstAttribute="centerY" secondItem="3Mc-2H-DaC" secondAttribute="centerY" id="pue-Wp-BFG"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="driverId" destination="f5z-iU-vR0" id="Vkj-zl-hXv"/>
+                                            <outlet property="label" destination="sTJ-6T-Q8u" id="n0u-Km-BT4"/>
+                                        </connections>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WIZ-Gf-leN" userLabel="DriverId Field">
-                                        <rect key="frame" x="0.0" y="59" width="363" height="54.5"/>
+                                        <rect key="frame" x="0.0" y="44" width="308" height="54.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ha-vG-SXJ" userLabel="Label">
                                                 <rect key="frame" x="0.0" y="17" width="66.5" height="20.5"/>
@@ -42,7 +59,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1I-4m-hy2" userLabel="Text Field">
-                                                <rect key="frame" x="74.5" y="10" width="288.5" height="34.5"/>
+                                                <rect key="frame" x="74.5" y="10" width="233.5" height="34.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="Rau-6k-CM3"/>
                                                 </constraints>
@@ -62,7 +79,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfy-eI-tEf">
-                                        <rect key="frame" x="0.0" y="113.5" width="363" height="44"/>
+                                        <rect key="frame" x="0.0" y="98.5" width="308" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="WGS-Aj-26O"/>
                                         </constraints>
@@ -72,24 +89,24 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kdk-om-gCn" userLabel="Spacer">
-                                        <rect key="frame" x="0.0" y="157.5" width="363" height="20"/>
+                                        <rect key="frame" x="0.0" y="142.5" width="308" height="20"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Djk-Ff-6ge"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="34E-oQ-6Hj" userLabel="Start/Stop Tracking">
-                                        <rect key="frame" x="0.0" y="177.5" width="363" height="44"/>
+                                        <rect key="frame" x="0.0" y="162.5" width="308" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Tracking Activated:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W09-IQ-rqj">
-                                                <rect key="frame" x="0.0" y="0.0" width="285.5" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="242" height="44"/>
                                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.75" height="1"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yTr-4H-RKF">
-                                                <rect key="frame" x="285.5" y="0.0" width="79.5" height="44"/>
+                                                <rect key="frame" x="242" y="0.0" width="68" height="44"/>
                                                 <connections>
                                                     <action selector="trackingSwitchTouched:" destination="BYZ-38-t0r" eventType="valueChanged" id="ZQt-lw-oqe"/>
                                                 </connections>
@@ -100,17 +117,17 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="0iq-Fz-ugA" userLabel="Auto activate">
-                                        <rect key="frame" x="0.0" y="221.5" width="363" height="44"/>
+                                        <rect key="frame" x="0.0" y="206.5" width="308" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reactivate on AppStart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDA-OA-Rrn">
-                                                <rect key="frame" x="0.0" y="0.0" width="284.5" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="241" height="44"/>
                                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.75" height="1"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Hv8-sa-inE">
-                                                <rect key="frame" x="284.5" y="0.0" width="80.5" height="44"/>
+                                                <rect key="frame" x="241" y="0.0" width="69" height="44"/>
                                                 <connections>
                                                     <action selector="reactivateSwitchTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k4J-dg-PTc"/>
                                                 </connections>
@@ -121,17 +138,17 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fm0-CW-wOF" userLabel="Clear/Copy Log">
-                                        <rect key="frame" x="0.0" y="265.5" width="363" height="44"/>
+                                        <rect key="frame" x="0.0" y="250.5" width="308" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg0-dH-bfN">
-                                                <rect key="frame" x="0.0" y="0.0" width="181.5" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="154" height="44"/>
                                                 <state key="normal" title="Clear Log"/>
                                                 <connections>
                                                     <action selector="clearLog:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lCp-dR-dna"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpe-gS-Wuc">
-                                                <rect key="frame" x="181.5" y="0.0" width="181.5" height="44"/>
+                                                <rect key="frame" x="154" y="0.0" width="154" height="44"/>
                                                 <state key="normal" title="Copy Log"/>
                                                 <connections>
                                                     <action selector="copyLog:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LhS-ot-OWM"/>
@@ -146,7 +163,7 @@
                                         </constraints>
                                     </stackView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hwa-w3-FwN">
-                                        <rect key="frame" x="0.0" y="309.5" width="363" height="343"/>
+                                        <rect key="frame" x="0.0" y="294.5" width="308" height="215"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="bHd-dD-PWk"/>
@@ -157,12 +174,16 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Trip Tracker Version: 20200309.0 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4h-Rf-NGq">
-                                        <rect key="frame" x="0.0" y="652.5" width="363" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="509.5" width="308" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="3Mc-2H-DaC" firstAttribute="leading" secondItem="uJq-5S-kDf" secondAttribute="leading" id="n8f-am-iEb"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Mc-2H-DaC" secondAttribute="trailing" id="yzS-Om-YXW"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -175,11 +196,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="activationToggleRow" destination="34E-oQ-6Hj" id="baW-Em-uZY"/>
                         <outlet property="createDriverButton" destination="Nfy-eI-tEf" id="A6y-Yw-9TO"/>
                         <outlet property="driverIdTextField" destination="c1I-4m-hy2" id="HBt-VU-4Rp"/>
-                        <outlet property="driverStatusField" destination="Iik-fX-RXJ" id="vvf-pk-XSK"/>
+                        <outlet property="driverStatusView" destination="3Mc-2H-DaC" id="3dr-aJ-Q25"/>
                         <outlet property="notificationField" destination="hwa-w3-FwN" id="LJX-no-KA7"/>
                         <outlet property="reactivateSwitch" destination="Hv8-sa-inE" id="ZKg-CR-U6f"/>
                         <outlet property="tripTrackingSwitch" destination="yTr-4H-RKF" id="cLC-fA-ZsZ"/>
