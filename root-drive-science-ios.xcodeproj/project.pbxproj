@@ -12,6 +12,10 @@
 		1B0F6BF02326DBA700DEDFB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B0F6BEF2326DBA700DEDFB1 /* Assets.xcassets */; };
 		1B0F6BF32326DBA700DEDFB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B0F6BF12326DBA700DEDFB1 /* LaunchScreen.storyboard */; };
 		1B0F6BFE2326DBA700DEDFB1 /* root_drive_science_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6BFD2326DBA700DEDFB1 /* root_drive_science_iosTests.swift */; };
+		4876AA09243BC80800FD5391 /* UILabel+Copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876AA08243BC80800FD5391 /* UILabel+Copy.swift */; };
+		4876AA0A243BC80800FD5391 /* UILabel+Copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876AA08243BC80800FD5391 /* UILabel+Copy.swift */; };
+		4876AA0C243CD7EA00FD5391 /* DriverStatusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876AA0B243CD7EA00FD5391 /* DriverStatusField.swift */; };
+		4876AA0D243CD7EA00FD5391 /* DriverStatusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4876AA0B243CD7EA00FD5391 /* DriverStatusField.swift */; };
 		48C32E1023E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C32E0F23E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift */; };
 		5A7988D024102ECB00584C3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0F6BE82326DBA600DEDFB1 /* AppDelegate.swift */; };
 		5AC3BE7C233CFB6C0006AFC5 /* UserStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3BE7A233CFB6C0006AFC5 /* UserStore.xcdatamodeld */; };
@@ -46,6 +50,8 @@
 		2D5656562E20A94CA12FA1F9 /* Pods-root-drive-science-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-root-drive-science-ios.release.xcconfig"; path = "Target Support Files/Pods-root-drive-science-ios/Pods-root-drive-science-ios.release.xcconfig"; sourceTree = "<group>"; };
 		333303D42C9A5E7602836731 /* Pods_root_drive_science_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_root_drive_science_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		416EC7BA96A435F14861A246 /* Pods-root-drive-science-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-root-drive-science-iosTests.debug.xcconfig"; path = "Target Support Files/Pods-root-drive-science-iosTests/Pods-root-drive-science-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4876AA08243BC80800FD5391 /* UILabel+Copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Copy.swift"; sourceTree = "<group>"; };
+		4876AA0B243CD7EA00FD5391 /* DriverStatusField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverStatusField.swift; sourceTree = "<group>"; };
 		48C32E0F23E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+TripTrackerDelegates.swift"; sourceTree = "<group>"; };
 		5A2C667B2344F585002C8CFF /* UserStore 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "UserStore 2.xcdatamodel"; sourceTree = "<group>"; };
 		5AC3BE7B233CFB6C0006AFC5 /* UserStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserStore.xcdatamodel; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 		1B0F6BE72326DBA600DEDFB1 /* root-drive-science-ios */ = {
 			isa = PBXGroup;
 			children = (
+				4876AA07243BC7CF00FD5391 /* View */,
 				1B0F6BE82326DBA600DEDFB1 /* AppDelegate.swift */,
 				1B0F6BEF2326DBA700DEDFB1 /* Assets.xcassets */,
 				1B0F6BF42326DBA700DEDFB1 /* Info.plist */,
@@ -121,6 +128,15 @@
 				1B0F6BFD2326DBA700DEDFB1 /* root_drive_science_iosTests.swift */,
 			);
 			path = "root-drive-science-iosTests";
+			sourceTree = "<group>";
+		};
+		4876AA07243BC7CF00FD5391 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4876AA0B243CD7EA00FD5391 /* DriverStatusField.swift */,
+				4876AA08243BC80800FD5391 /* UILabel+Copy.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AA0EF9B1A9683CAB5386EDD8 /* Frameworks */ = {
@@ -320,7 +336,9 @@
 				1B0F6BEB2326DBA600DEDFB1 /* ViewController.swift in Sources */,
 				48C32E1023E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift in Sources */,
 				5AE34A9123391AAD00230546 /* notification_name_extensions.swift in Sources */,
+				4876AA09243BC80800FD5391 /* UILabel+Copy.swift in Sources */,
 				5AC3BE7C233CFB6C0006AFC5 /* UserStore.xcdatamodeld in Sources */,
+				4876AA0C243CD7EA00FD5391 /* DriverStatusField.swift in Sources */,
 				5AC3BE7E233D05440006AFC5 /* TelematicsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +348,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B0F6BFE2326DBA700DEDFB1 /* root_drive_science_iosTests.swift in Sources */,
+				4876AA0D243CD7EA00FD5391 /* DriverStatusField.swift in Sources */,
+				4876AA0A243BC80800FD5391 /* UILabel+Copy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

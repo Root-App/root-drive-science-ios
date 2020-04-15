@@ -29,7 +29,7 @@ extension ViewController: TripTrackerDriveScienceManagerDelegate {
     func didNotReceiveDriverId(_ errorMessage: String) {
         telematicsManager.activeDriverId = nil
         DispatchQueue.main.async {
-            self.driverStatusField.text = "Driver registration failed"
+            self.driverStatusView.displayErrorMessage()
         }
         appendNotificationText("Unable to create driver: \(errorMessage)")
     }

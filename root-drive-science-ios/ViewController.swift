@@ -14,8 +14,10 @@ class ViewController: UIViewController {
     var telematicsManager: TelematicsManager!
 
     @IBOutlet var notificationField: UITextView!
-    @IBOutlet var driverStatusField: UILabel!
+    @IBOutlet var versionFooter: UILabel!
+    @IBOutlet var driverStatusView: DriverStatusField!
 
+    @IBOutlet var activationToggleRow: UIStackView!
     @IBOutlet var driverIdTextField: UITextField!
 
     @IBOutlet var createDriverButton: UIButton!
@@ -38,9 +40,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = UIColor(red: 1.0, green: 87 / 255, blue: 21 / 255, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+
         setupTelematics()
         checkLocationServicesEnabled()
         notificationField.text = ""
+        driverStatusView.driverId.isCopyEnabled = true
+        versionFooter.isCopyEnabled = true
     }
 
     func displayTelematicsManagerState() {
@@ -54,11 +63,7 @@ class ViewController: UIViewController {
     }
 
     func displayDriverRegistrationLabel() {
-        if telematicsManager.hasActiveDriver {
-            driverStatusField.text = "Driver registered: \(telematicsManager.activeDriverId!)"
-        } else {
-            driverStatusField.text = "No Driver Registered"
-        }
+        driverStatusView.registeredDriverId = telematicsManager.activeDriverId
     }
 
     func displayDriverIdField() {
@@ -75,6 +80,9 @@ class ViewController: UIViewController {
     }
 
     func displayActivationToggle() {
+        UIView.animate(withDuration: 0.2) {
+            self.activationToggleRow.alpha = self.telematicsManager.hasActiveDriver ? 1 : 0
+        }
         tripTrackingSwitch.isEnabled = telematicsManager.hasActiveDriver
         setTrackingSwitch(telematicsManager.isTracking)
     }
@@ -100,7 +108,7 @@ class ViewController: UIViewController {
 
     func appendNotificationText(_ text: String) {
         DispatchQueue.main.async {
-            self.notificationField.text = "[\(self.timestamp)]:" + text + "\n" + (self.notificationField.text ?? "")
+            self.notificationField.text = self.notificationField.text.appending("[\(self.timestamp)]:" + text + "\n")
         }
     }
 
