@@ -1,6 +1,10 @@
 #!/bin/bash
 source ~/.bashrc
 
+set -euo pipefail
+
+.buildkite/setup-ios-tests.sh
+
 bundle install
 ./bin/run-synx.sh
 echo "checking synx diff"

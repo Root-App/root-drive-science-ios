@@ -3,9 +3,6 @@ source ~/.bashrc
 
 set -euo pipefail
 
-bundle install
-
-bundle exec pod repo update
-bundle exec pod install
+.buildkite/setup-ios-tests.sh
 
 bin/run-swiftformat --lint --verbose
