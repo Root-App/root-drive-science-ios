@@ -2,8 +2,8 @@
 platform :ios, '10.0'
 
 #source 'git@github.com:root-app/root-pod-specs.git'
-source 'git@github.com:Root-App/drive-science-pod-specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
+plugin 'cocoapods-art', :sources => %w(enterprise-cocoapods)
 
 target 'root-drive-science-ios' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -12,7 +12,7 @@ target 'root-drive-science-ios' do
 
   # Pods for root-drive-science-ios
   # Use this version if you are not also changing code in RootTripTracker
-   pod "RootTripTracker", "20200309.0"
+   pod "RootTripTracker", "20200316.2"
 
 #  Use this version of the apps if you are working in RootTripTracker
   # pod "RootTripTrackerSource", path: '~/code/root-ios-trip-tracker/RootTripTrackerSource.podspec'
