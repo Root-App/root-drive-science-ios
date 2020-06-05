@@ -2,7 +2,8 @@ source "https://rubygems.org"
 
 ruby File.read(File.join(File.dirname(__FILE__), ".ruby-version")).chomp
 
-gem "cocoapods", "1.6.2"
+gem 'cocoapods', '1.9.2'
+gem 'cocoapods-art', '1.0.4'
 gem "fastlane", "2.116.0"
 gem "synx", "0.2.1"
 gem "testflight", "1.0.3"

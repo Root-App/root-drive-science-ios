@@ -6,6 +6,7 @@
 //  Copyright © 2020 Root. All rights reserved.
 //
 
+import Foundation
 import RootTripTracker
 
 extension ViewController: TripTrackerClientDelegate {
