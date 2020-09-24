@@ -11,11 +11,11 @@ import RootTripTracker
 
 extension ViewController: TripTrackerClientDelegate {
     func didStartTrip(_ tripId: String) {
-        appendNotificationText("Trip started with id \(tripId)")
+        addLogMessage("Trip started with id \(tripId)")
     }
 
     func didEndTrip(_ tripId: String) {
-        appendNotificationText("Trip ended with id \(tripId)")
+        addLogMessage("Trip ended with id \(tripId)")
     }
 }
 
@@ -24,7 +24,7 @@ extension ViewController: TripTrackerDriveScienceManagerDelegate {
         // save our own reference to activeDriverId
         telematicsManager.activeDriverId = driverId
         driverCreated(driverId)
-        appendNotificationText("Created driver: \(driverId)")
+        addLogMessage("Created driver: \(driverId)")
     }
 
     func didNotReceiveDriverId(_ errorMessage: String) {
@@ -32,16 +32,16 @@ extension ViewController: TripTrackerDriveScienceManagerDelegate {
         DispatchQueue.main.async {
             self.driverStatusView.displayErrorMessage()
         }
-        appendNotificationText("Unable to create driver: \(errorMessage)")
+        addLogMessage("Unable to create driver: \(errorMessage)")
     }
 
     func activationDidSucceed(_ manager: TripTrackerDriveScienceManager) {
-        appendNotificationText("Activated successfully.")
+        addLogMessage("Activated successfully.")
         setTrackingSwitch(true)
     }
 
     func activationDidFail(_ manager: TripTrackerDriveScienceManager, errorMessage: String) {
-        appendNotificationText("Unable to activate: \(errorMessage)")
+        addLogMessage("Unable to activate: \(errorMessage)")
     }
 }
 
@@ -51,13 +51,13 @@ extension ViewController: TripTrackerDelegate {
         didTrackAnalyticsEvent eventName: String,
         withProperties properties: [String: Any]
     ) {
-        appendNotificationText(eventName)
+        addLogMessage(eventName)
     }
 
     func tripTracker(
         _ tripTracker: TripTracker,
         didFailWithError error: TripTrackerError
     ) {
-        appendNotificationText("Trip Tracker error.")
+        addLogMessage("Trip Tracker error.")
     }
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Root. All rights reserved.
 //
 
+import CoreData
 import CoreLocation
 import RootTripTracker
 import UIKit
@@ -27,6 +28,9 @@ class ViewController: UIViewController {
 
     var environmentData: [String] = [String]()
 
+    var container: NSPersistentContainer!
+    var logMessages: [LogMessage] = []
+
     private lazy var dateFormat: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
@@ -40,6 +44,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+        guard container != nil else {
+            fatalError("This view needs a persistent container.")
+        }
+
         navigationController?.navigationBar.barTintColor = UIColor(red: 1.0, green: 87 / 255, blue: 21 / 255, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white
@@ -50,6 +59,20 @@ class ViewController: UIViewController {
         notificationField.text = ""
         driverStatusView.driverId.isCopyEnabled = true
         versionFooter.isCopyEnabled = true
+
+        let managedContext = container.viewContext
+
+        let fetchRequest: NSFetchRequest<LogMessage> = LogMessage.fetchRequest()
+
+        do {
+            logMessages = try managedContext.fetch(fetchRequest)
+            for logMessage in logMessages {
+                displayLogMessage(logMessage)
+            }
+
+        } catch let error as NSError {
+            print("Could not fetch log messages. \(error), \(error.userInfo)")
+        }
     }
 
     func displayTelematicsManagerState() {
@@ -102,13 +125,42 @@ class ViewController: UIViewController {
 
     private func checkLocationServicesEnabled() {
         if !CLLocationManager.locationServicesEnabled() {
-            appendNotificationText("Location services disabled at system level! Will be unable to track trips!")
+            addLogMessage("Location services disabled at system level! Will be unable to track trips!")
         }
     }
 
-    func appendNotificationText(_ text: String) {
+    func addLogMessage(_ text: String) {
+        if let newMessage = saveLogMessage(text) {
+            displayLogMessage(newMessage)
+        }
+    }
+
+    private func saveLogMessage(_ text: String) -> LogMessage? {
+        let managedContext = container.viewContext
+
+        let entity = NSEntityDescription.entity(forEntityName: "LogMessage", in: managedContext)!
+
+        let logMessage = LogMessage(entity: entity, insertInto: managedContext)
+
+        logMessage.message = text
+        logMessage.date = Date()
+
+        do {
+            try managedContext.save()
+            logMessages.append(logMessage)
+            return logMessage
+        } catch let error as NSError {
+            print("Could not save log message. \(error), \(error.userInfo)")
+        }
+
+        return nil
+    }
+
+    private func displayLogMessage(_ logMessage: LogMessage) {
         DispatchQueue.main.async {
-            self.notificationField.text = self.notificationField.text.appending("[\(self.timestamp)]:" + text + "\n")
+            let message = logMessage.message!
+            let date = logMessage.date!
+            self.notificationField.text = self.notificationField.text.appending("[\(self.dateFormat.string(from: date))]:" + message + "\n")
         }
     }
 
@@ -136,7 +188,7 @@ class ViewController: UIViewController {
     func cancelDriver() {
         telematicsManager.cancelDriver()
         stopTracking()
-        appendNotificationText("Driver unregistered successfully")
+        addLogMessage("Driver unregistered successfully")
         displayTelematicsManagerState()
     }
 
@@ -144,13 +196,13 @@ class ViewController: UIViewController {
         if telematicsManager.hasActiveDriver {
             _ = telematicsManager.start()
         } else {
-            appendNotificationText("No active driver")
+            addLogMessage("No active driver")
         }
     }
 
     func stopTracking() {
         telematicsManager.stop()
-        appendNotificationText("Tracking Stopped")
+        addLogMessage("Tracking Stopped")
     }
 
     @IBAction func trackingSwitchTouched(_ sender: UISwitch) {
@@ -168,6 +220,17 @@ class ViewController: UIViewController {
     @IBAction func clearLog(_ sender: UIButton) {
         DispatchQueue.main.async {
             self.notificationField.text = ""
+
+            do {
+                let managedContext = self.container.viewContext
+
+                for logMessage in self.logMessages {
+                    managedContext.delete(logMessage)
+                }
+                try managedContext.save()
+            } catch  let error as NSError {
+                print("Could not delete log messages. \(error), \(error.userInfo)")
+            }
         }
     }
 
@@ -178,11 +241,11 @@ class ViewController: UIViewController {
 
     @objc func onDidTrackAnalyticsEvent(_ notification: Notification) {
         let eventName = notification.userInfo!["eventName"] as! String
-        appendNotificationText(eventName)
+        addLogMessage(eventName)
     }
 
     @objc func onDidFailWithError(_ notification: Notification) {
-        appendNotificationText("Error")
+        addLogMessage("Error")
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
