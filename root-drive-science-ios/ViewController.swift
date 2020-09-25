@@ -217,6 +217,25 @@ class ViewController: UIViewController {
         telematicsManager.setAutoActivate(sender.isOn)
     }
 
+    @IBAction func checkPermissions(_ sender: UIButton) {
+        let check = telematicsManager.driveScienceManager.tripTrackingPermissionCheck
+        if check.allPermissionsAuthorized {
+            addLogMessage("All permissions set correctly!")
+        } else {
+            addLogMessage("Correctly authorized permissions:")
+            let authorized = check.authorizedPermissions
+            for permission in authorized {
+                addLogMessage(permission.rawValue)
+            }
+            
+            addLogMessage("Incorrect permissions:")
+            let unauthorized = check.unauthorizedPermissions
+            for permission in unauthorized {
+                addLogMessage(permission.rawValue)
+            }
+        }
+    }
+
     @IBAction func clearLog(_ sender: UIButton) {
         DispatchQueue.main.async {
             self.notificationField.text = ""
