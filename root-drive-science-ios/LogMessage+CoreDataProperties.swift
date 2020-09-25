@@ -7,17 +7,14 @@
 //
 //
 
-import Foundation
 import CoreData
-
+import Foundation
 
 extension LogMessage {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<LogMessage> {
         return NSFetchRequest<LogMessage>(entityName: "LogMessage")
     }
 
     @NSManaged public var date: Date?
     @NSManaged public var message: String?
-
 }

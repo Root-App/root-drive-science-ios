@@ -6,9 +6,9 @@
 //  Copyright © 2019 Root. All rights reserved.
 //
 
+import CoreData
 import CoreLocation
 import CoreMotion
-import CoreData
 import RootTripTracker
 import UIKit
 
@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "LogMessages")
-        container.loadPersistentStores { description, error in
+        container.loadPersistentStores { _, error in
             if let error = error {
                 fatalError("Unable to load persistent stores: \(error)")
             }

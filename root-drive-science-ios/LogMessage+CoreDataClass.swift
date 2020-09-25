@@ -7,10 +7,8 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 @objc(LogMessage)
-public class LogMessage: NSManagedObject {
-
-}
+public class LogMessage: NSManagedObject {}

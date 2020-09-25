@@ -228,7 +228,7 @@ class ViewController: UIViewController {
                     managedContext.delete(logMessage)
                 }
                 try managedContext.save()
-            } catch  let error as NSError {
+            } catch let error as NSError {
                 print("Could not delete log messages. \(error), \(error.userInfo)")
             }
         }
