@@ -6,6 +6,7 @@
 //  Copyright © 2019 Root. All rights reserved.
 //
 
+import CoreData
 import CoreLocation
 import CoreMotion
 import RootTripTracker
@@ -16,6 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var locationManager: CLLocationManager?
     var activityManager: CMMotionActivityManager?
+
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "LogMessages")
+        container.loadPersistentStores { _, error in
+            if let error = error {
+                fatalError("Unable to load persistent stores: \(error)")
+            }
+        }
+        return container
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

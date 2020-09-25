@@ -22,6 +22,9 @@
 		5AC3BE7E233D05440006AFC5 /* TelematicsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3BE7D233D05440006AFC5 /* TelematicsManager.swift */; };
 		5AE34A9123391AAD00230546 /* notification_name_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE34A9023391AAD00230546 /* notification_name_extensions.swift */; };
 		AB3F231C9A53080B6C2849B7 /* Pods_root_drive_science_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333303D42C9A5E7602836731 /* Pods_root_drive_science_ios.framework */; };
+		B4279CDD251CF86D0053A7FA /* LogMessages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4279CDB251CF86D0053A7FA /* LogMessages.xcdatamodeld */; };
+		B43CD194251D46C00069C271 /* LogMessage+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CD192251D46C00069C271 /* LogMessage+CoreDataClass.swift */; };
+		B43CD195251D46C00069C271 /* LogMessage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43CD193251D46C00069C271 /* LogMessage+CoreDataProperties.swift */; };
 		CB2BF305B8496B9D51A17B81 /* Pods_root_drive_science_iosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E624ADF149C0E1F3B5E22320 /* Pods_root_drive_science_iosTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,9 @@
 		5AE34A9023391AAD00230546 /* notification_name_extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notification_name_extensions.swift; sourceTree = "<group>"; };
 		5AE34A922339477B00230546 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		87ACD7BAE6C476EBE50131A8 /* Pods-root-drive-science-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-root-drive-science-ios.debug.xcconfig"; path = "Target Support Files/Pods-root-drive-science-ios/Pods-root-drive-science-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		B4279CDC251CF86D0053A7FA /* LogMessages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LogMessages.xcdatamodel; sourceTree = "<group>"; };
+		B43CD192251D46C00069C271 /* LogMessage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogMessage+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B43CD193251D46C00069C271 /* LogMessage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogMessage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E624ADF149C0E1F3B5E22320 /* Pods_root_drive_science_iosTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_root_drive_science_iosTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -112,6 +118,9 @@
 				1B0F6BEF2326DBA700DEDFB1 /* Assets.xcassets */,
 				1B0F6BF42326DBA700DEDFB1 /* Info.plist */,
 				1B0F6BF12326DBA700DEDFB1 /* LaunchScreen.storyboard */,
+				B43CD192251D46C00069C271 /* LogMessage+CoreDataClass.swift */,
+				B43CD193251D46C00069C271 /* LogMessage+CoreDataProperties.swift */,
+				B4279CDB251CF86D0053A7FA /* LogMessages.xcdatamodeld */,
 				1B0F6BEC2326DBA600DEDFB1 /* Main.storyboard */,
 				5AC3BE7D233D05440006AFC5 /* TelematicsManager.swift */,
 				48C32E0F23E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift */,
@@ -332,12 +341,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4279CDD251CF86D0053A7FA /* LogMessages.xcdatamodeld in Sources */,
 				5A7988D024102ECB00584C3B /* AppDelegate.swift in Sources */,
+				B43CD194251D46C00069C271 /* LogMessage+CoreDataClass.swift in Sources */,
 				1B0F6BEB2326DBA600DEDFB1 /* ViewController.swift in Sources */,
 				48C32E1023E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift in Sources */,
 				5AE34A9123391AAD00230546 /* notification_name_extensions.swift in Sources */,
 				4876AA09243BC80800FD5391 /* UILabel+Copy.swift in Sources */,
 				5AC3BE7C233CFB6C0006AFC5 /* UserStore.xcdatamodeld in Sources */,
+				B43CD195251D46C00069C271 /* LogMessage+CoreDataProperties.swift in Sources */,
 				4876AA0C243CD7EA00FD5391 /* DriverStatusField.swift in Sources */,
 				5AC3BE7E233D05440006AFC5 /* TelematicsManager.swift in Sources */,
 			);
@@ -626,6 +638,16 @@
 			);
 			currentVersion = 5A2C667B2344F585002C8CFF /* UserStore 2.xcdatamodel */;
 			path = UserStore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		B4279CDB251CF86D0053A7FA /* LogMessages.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B4279CDC251CF86D0053A7FA /* LogMessages.xcdatamodel */,
+			);
+			currentVersion = B4279CDC251CF86D0053A7FA /* LogMessages.xcdatamodel */;
+			path = LogMessages.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
