@@ -158,9 +158,9 @@ class ViewController: UIViewController {
 
     private func displayLogMessage(_ logMessage: LogMessage) {
         DispatchQueue.main.async {
-            let message = logMessage.message!
-            let date = logMessage.date!
-            self.notificationField.text = self.notificationField.text.appending("[\(self.dateFormat.string(from: date))]:" + message + "\n")
+            if let message = logMessage.message, let date = logMessage.date {
+                self.notificationField.text = self.notificationField.text.appending("[\(self.dateFormat.string(from: date))]:" + message + "\n")
+            }
         }
     }
 
