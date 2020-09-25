@@ -118,14 +118,14 @@
 				1B0F6BEF2326DBA700DEDFB1 /* Assets.xcassets */,
 				1B0F6BF42326DBA700DEDFB1 /* Info.plist */,
 				1B0F6BF12326DBA700DEDFB1 /* LaunchScreen.storyboard */,
+				B43CD192251D46C00069C271 /* LogMessage+CoreDataClass.swift */,
+				B43CD193251D46C00069C271 /* LogMessage+CoreDataProperties.swift */,
+				B4279CDB251CF86D0053A7FA /* LogMessages.xcdatamodeld */,
 				1B0F6BEC2326DBA600DEDFB1 /* Main.storyboard */,
 				5AC3BE7D233D05440006AFC5 /* TelematicsManager.swift */,
 				48C32E0F23E87F2500D68F88 /* ViewController+TripTrackerDelegates.swift */,
 				1B0F6BEA2326DBA600DEDFB1 /* ViewController.swift */,
 				5AE34A9023391AAD00230546 /* notification_name_extensions.swift */,
-				B4279CDB251CF86D0053A7FA /* LogMessages.xcdatamodeld */,
-				B43CD192251D46C00069C271 /* LogMessage+CoreDataClass.swift */,
-				B43CD193251D46C00069C271 /* LogMessage+CoreDataProperties.swift */,
 			);
 			path = "root-drive-science-ios";
 			sourceTree = "<group>";
