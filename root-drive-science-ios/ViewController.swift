@@ -227,7 +227,7 @@ class ViewController: UIViewController {
             for permission in authorized {
                 addLogMessage(permission.rawValue)
             }
-            
+
             addLogMessage("Incorrect permissions:")
             let unauthorized = check.unauthorizedPermissions
             for permission in unauthorized {
