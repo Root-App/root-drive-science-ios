@@ -12,10 +12,10 @@ target 'root-drive-science-ios' do
 
   # Pods for root-drive-science-ios
   # Use this version if you are not also changing code in RootTripTracker
-   pod "RootTripTracker", "20200922.1.0"
+  pod "RootTripTracker", "20200922.1.2"
 
 #  Use this version of the apps if you are working in RootTripTracker
-  # pod "RootTripTrackerSource", path: '~/code/root-ios-trip-tracker/RootTripTrackerSource.podspec'
+   # pod "RootTripTrackerSource", path: '~/code/root-ios-trip-tracker/RootTripTrackerSource.podspec'
 
 
   target 'root-drive-science-iosTests' do
