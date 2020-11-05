@@ -5,7 +5,7 @@ PODS:
   - DataCompression (3.0.0)
   - Godzippa (2.1.1)
   - Mixpanel (3.6.0)
-  - RootTripTracker (20200922.1.0):
+  - RootTripTracker (20200922.1.2):
     - AWSS3 (= 2.9.3)
     - DataCompression (= 3.0.0)
     - Godzippa (= 2.1.1)
@@ -17,7 +17,7 @@ PODS:
   - SwiftFormat/CLI (0.39.0)
 
 DEPENDENCIES:
-  - RootTripTracker (= 20200922.1.0)
+  - RootTripTracker (= 20200922.1.2)
   - SwiftFormat/CLI (= 0.39.0)
 
 SPEC REPOS:
@@ -38,10 +38,10 @@ SPEC CHECKSUMS:
   DataCompression: 4df426340ccbf53851df71dd652bd80d0ea47eb7
   Godzippa: f438af100364a775ef0707d29ab152c356375fbf
   Mixpanel: 446b6e7713aa34a9a3516ff7648d56551384fc94
-  RootTripTracker: f713e52a7981926c13dd2ad06b36aef74b7fa68a
+  RootTripTracker: a54f0b5e8748089f95432967b58e1fa425520ee7
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SwiftFormat: a27a799eeaf246313c3b388ad6d5ae33c78eb6f3
 
-PODFILE CHECKSUM: f8a5e17869852177def386065355dc4f78a3782d
+PODFILE CHECKSUM: 10cda566fa3080232b618c7cd07b7a33e23b14d6
 
 COCOAPODS: 1.9.2
