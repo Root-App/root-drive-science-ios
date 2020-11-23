@@ -24,7 +24,7 @@ pipeline['steps'] << {
   'label' => ':swift: iOS tests',
   'command' => '.buildkite/ios-pipeline-command.sh',
   'timeout_in_minutes' => 120,
-  'agents' => { 'queue' => 'ios-xcode-11-14-1' },
+  'agents' => { 'queue' => 'ios-xcode-12' },
   'plugins' => secrets_plugin,
   'env' => {
     'DOCKER_PULL_ROOT_SERVER' => 'false'
@@ -35,7 +35,7 @@ pipeline['steps'] << {
   'label' => ':swift: Swift Format',
   'command' => '.buildkite/ios-pipeline-command-swiftformat.sh',
   'timeout_in_minutes' => 120,
-  'agents' => { 'queue' => 'ios-xcode-11-14-1' },
+  'agents' => { 'queue' => 'ios-xcode-12' },
   'plugins' => secrets_plugin,
   'env' => {
     'DOCKER_PULL_ROOT_SERVER' => 'false'
