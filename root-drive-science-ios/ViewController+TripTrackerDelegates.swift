@@ -51,7 +51,7 @@ extension ViewController: TripTrackerDelegate {
         didTrackAnalyticsEvent eventName: String,
         withProperties properties: [String: Any]
     ) {
-        addLogMessage(eventName)
+        addLogMessage("\(eventName) - \(properties)")
     }
 
     func tripTracker(
