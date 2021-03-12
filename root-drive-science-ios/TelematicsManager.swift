@@ -21,6 +21,8 @@ class TelematicsManager {
     init(delegate: TripTrackerDriveScienceManagerDelegate,
          clientDelegate: TripTrackerClientDelegate,
          tripTrackerDelegate: TripTrackerDelegate) {
+        TripTracker.debugLoggingEnabled = true
+
         driveScienceManager = TripTrackerDriveScienceManager(
             clientId: TelematicsManager.clientId,
             environment: .staging,
